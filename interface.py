@@ -8,7 +8,7 @@ st.write("he extractive text summarization system creates summaries by identifyi
 
 with st.form("my_form"):
    st.write("Upload TXT File")
+   title = st.text_input('Movie title', 'Life of Brian')
+   st.write('The current movie title is', title)
    st.form_submit_button("Summarize")
 
-title = st.text_input('Movie title', 'Life of Brian')
-st.write('The current movie title is', title)
