@@ -5,7 +5,7 @@ st.title("ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYST
 activities = ["Information","Summarize"]
 choice = st.sidebar.selectbox("Select Activity",activities)   
 
-if choice == 'Information'
+if choice == 'Information':
    st.write("The extractive text summarization system creates summaries by identifying, extracting the sentences, and subsequently combining the most important sentences in an online book to generate in form of a summary.")
 
 if choice == 'Summarize':
