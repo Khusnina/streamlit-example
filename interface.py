@@ -9,6 +9,6 @@ choice = st.sidebar.selectbox("Select Activity",activities)
 if choice == 'Summarize':
    st.subheader("TEXT SUMMARIZER")
    raw_text = st.text_area("Enter Text Here","Text Content")
-
-   
+   if st.button("Summarize"):
+      st.write(raw_text)
    
