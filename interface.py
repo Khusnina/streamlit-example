@@ -1,7 +1,7 @@
 import streamlit as st  
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
-st.title("<center>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES\n..............................................................................................................................................................................................")
+st.title("   ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES\n..............................................................................................................................................................................................")
 activities = ["Information","Summarize"]
 choice = st.sidebar.selectbox("Select Activity",activities)   
 
