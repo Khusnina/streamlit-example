@@ -12,3 +12,12 @@ with st.form("my_form"):
    st.write('Fiction Books Content', title)
    st.form_submit_button("Summarize")
 
+#custom funtion 
+def summary(text):
+    return summarize(text)
+
+# Custom Components Fxn
+def st_calculator(calc_html,width=1000,height=1350):
+	calc_file = codecs.open(calc_html,'r')
+	page = calc_file.read()
+	components.html(page,width=width,height=height,scrolling=False)
