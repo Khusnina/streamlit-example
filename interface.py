@@ -14,7 +14,7 @@ if choice == 'Summarize':
    agree = st.checkbox('Show sentence')
    raw_text = st.text_area("Original Content","Enter text here")
    if st.button("Summarize"):
-      st.write("Summarized Content")
+      st.write("Enter text here")
       st.write(raw_text)
       st.button("Copy text")
       st.write("Words:")
