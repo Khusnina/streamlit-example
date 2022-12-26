@@ -10,6 +10,7 @@ if choice == 'Information':
 
 if choice == 'Summarize':
    st.subheader("TEXT SUMMARIZER")
+   st.button("Upload File")
    agree = st.checkbox('Show sentence')
    raw_text = st.text_area("Original Content","Enter text here")
    if st.button("Summarize"):
