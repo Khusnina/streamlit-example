@@ -16,6 +16,9 @@ if choice == 'Summarize':
    if st.button("Summarize"):
       st.write("Summarized Content")
       st.write(raw_text)
+      st.button("Copy text")
+      st.write("Words:")
+      
    if agree:
     st.write('---')
    
