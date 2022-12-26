@@ -13,7 +13,7 @@ if choice == 'Fiction Books':
    
 if choice == 'Summarize':
    st.subheader("TEXT SUMMARIZER")
-   st.button("Upload File")
+   st.button("Upload File (txt)")
    agree = st.checkbox('Show sentence')
    raw_text = st.text_area("Original Content","Enter text here")
    if st.button("Summarize"):
