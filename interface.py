@@ -7,7 +7,7 @@ st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTIO
 st.markdown("<hr size='5' width='100%;'>", unsafe_allow_html=True)
 activities = ["Introduction","Fiction Books","Summarize","Statistic"]
 choice = st.sidebar.selectbox("Select Activity",activities)   
-Df = pd.read_csv("Khusnina/streamlit-example/listBook.csv", encoding="latin-1")
+Df = pd.read_csv("https://github.com/Khusnina/streamlit-example/blob/master/listBook.csv", encoding="latin-1")
 st.write(Df)
 
 if choice == 'Introduction':
