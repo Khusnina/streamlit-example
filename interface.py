@@ -16,7 +16,7 @@ if choice == 'Fiction Books':
    category = ["Story","Harry Potter"]
    option = st.selectbox('Select Category', category)
    if option == 'Story':
-      st.markdown("<style>.button{padding: 20px 100%;}</style>", unsafe_allow_html=True)
+      st.markdown("<button style='padding: 20px 100%>Adventures</button>", unsafe_allow_html=True)
       st.button("Adventures of Huckleberry Finn")
       st.button("A Ghost of A Chance")
       st.button("Anais of Brightshire")
