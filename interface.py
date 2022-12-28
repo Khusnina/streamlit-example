@@ -13,10 +13,25 @@ if choice == 'Introduction':
 
 if choice == 'Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>", unsafe_allow_html=True)
-   url = (r'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/listBook.csv')
-   data_csv = pd.read_csv(url)
-   st.write(data_csv.head())
-   
+   option = st.selectbox('Story', 'Harry Potter')
+   if option == 'Story':
+      st.button("Adventures of Huckleberry Finn")
+      st.button("A Ghost of A Chance")
+      st.button("Anais of Brightshire")
+      st.button("A Princess of Mars")
+      st.button("Ardath")
+      st.button("Heart of Darkness")
+      st.button("Ella Eris and The Pirates of Redemption")
+         
+   if option == 'Harry Potter':
+      st.button("[1]Harry Potter -  The Boy Who Lived")
+      st.button("[2]Harry Potter -  The Worst Birthday")
+      st.button("[3]Harry Potter -  Owl Post")
+      st.button("[4]Harry Potter -  The Riddle House")
+      st.button("[5]Harry Potter -  Dudley Demented")
+      st.button("[6]Harry Potter -  The Other Minister")
+      st.button("[7]Harry Potter -  The Dark Lord Ascending")
+
    df = pd.DataFrame(
    np.random.randn(15, 2),
    columns=('col %d' % i for i in range(2)))
