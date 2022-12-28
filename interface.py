@@ -13,7 +13,8 @@ if choice == 'Introduction':
 
 if choice == 'Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>", unsafe_allow_html=True)
-   option = st.selectbox('Story', 'Harry Potter')
+   category = ["Story","Harry Potter"]
+   option = st.selectbox('Select Category', 'category')
    if option == 'Story':
       st.button("Adventures of Huckleberry Finn")
       st.button("A Ghost of A Chance")
