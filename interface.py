@@ -13,7 +13,7 @@ if choice == 'Introduction':
 
 if choice == 'Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>", unsafe_allow_html=True)
-   url = (r'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/listBook.csv')
+   url = (r'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/fictionBook.csv')
    data_csv = pd.read_csv(url)
    st.write(data_csv.head())
    
