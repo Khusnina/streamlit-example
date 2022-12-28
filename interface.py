@@ -13,7 +13,6 @@ if choice == 'Introduction':
 
 if choice == 'Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>")
-   st.markdown("<table style='width:100%; border:1px solid black;'><tr><th>Company</th><th>Contact</th></tr><tr><td>Alfreds Futterkiste</td><td>Maria Anders</td></tr><tr><td>Centro comercial Moctezuma</td><td>Francisco Chang</td></tr></table>")
    df = pd.DataFrame(
    np.random.randn(15, 2),
    columns=('col %d' % i for i in range(2)))
