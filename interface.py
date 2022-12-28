@@ -8,17 +8,17 @@ st.markdown("<hr size='5' width='100%;'>", unsafe_allow_html=True)
 activities = ["Introduction","Fiction Books","Summarize","Statistic"]
 choice = st.sidebar.selectbox("Select Activity",activities)   
 Df = pd.read_csv("Khusnina/streamlit-example/listBook.csv", encoding="latin-1")
-Df.head()
 
 if choice == 'Introduction':
    st.write("The extractive text summarization system creates summaries by identifying, extracting the sentences, and subsequently combining the most important sentences in an online book to generate in form of a summary.")
 
 if choice == 'Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>", unsafe_allow_html=True)
-   st.write(
+   st.write(Df)
    df = pd.DataFrame(
    np.random.randn(15, 2),
    columns=('col %d' % i for i in range(2)))
+   st.table(df)
    
 if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
