@@ -12,7 +12,7 @@ if choice == 'Introduction':
    st.write("The extractive text summarization system creates summaries by identifying, extracting the sentences, and subsequently combining the most important sentences in an online book to generate in form of a summary.")
 
 if choice == 'Fiction Books':
-   st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>")
+   st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>", unsafe_allow_html=True)
    df = pd.DataFrame(
    np.random.randn(15, 2),
    columns=('col %d' % i for i in range(2)))
