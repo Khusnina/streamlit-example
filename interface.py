@@ -6,7 +6,7 @@ st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
 st.markdown("<hr size='5' width='100%;'>", unsafe_allow_html=True)
 activities = ["Introduction","Fiction Books","Summarize","Statistic"]
-choice = st.sidebar.selectbox("Select Activity",activities)
+choice = st.sidebar.selectbox("Select Activity", activities)
 
 if choice == 'Introduction':
    st.write("The extractive text summarization system creates summaries by identifying, extracting the sentences, and subsequently combining the most important sentences in an online book to generate in form of a summary.")
@@ -14,7 +14,7 @@ if choice == 'Introduction':
 if choice == 'Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>", unsafe_allow_html=True)
    category = ["Story","Harry Potter"]
-   option = st.selectbox('Select Category', 'category')
+   option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.button("Adventures of Huckleberry Finn")
       st.button("A Ghost of A Chance")
