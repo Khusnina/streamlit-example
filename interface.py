@@ -19,7 +19,6 @@ if choice == 'Fiction Books':
    df = pd.DataFrame(
    np.random.randn(15, 2),
    columns=('col %d' % i for i in range(2)))
-   st.table(df)
    
 if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
