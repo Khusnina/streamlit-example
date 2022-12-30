@@ -1,6 +1,11 @@
 import streamlit as st  
 import pandas as pd
 import numpy as np
+import urllib.request
+import requests
+import urllib
+from urllib.request import urlopen
+import urllib3
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
@@ -13,10 +18,13 @@ if choice == 'Introduction':
 
 if choice == 'Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>", unsafe_allow_html=True)
+   uploaded_file = st.file_uploader("Choose a file")
+   if uploaded_file is not None:
+      df = pd.read_csv(uploaded_file)
+      st.write(dataframe)
    category = ["Story","Harry Potter"]
    option = st.selectbox('Select Category', category)
    if option == 'Story':
-      st.markdown("<button style='text-align: center; padding: 20px 500px;'>Adventures</button>", unsafe_allow_html=True)
       st.button("Adventures of Huckleberry Finn")
       st.button("A Ghost of A Chance")
       st.button("Anais of Brightshire")
@@ -24,7 +32,11 @@ if choice == 'Fiction Books':
       st.button("Ardath")
       st.button("Heart of Darkness")
       st.button("Ella Eris and The Pirates of Redemption")
-         
+      
+      if st.button("Adventures of Huckleberry Finn"):
+         file_url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/Adventures-of-Huckleberry-Finn.txt'
+         for line in urllib.request.urlopen(file_url):
+            print(line.decode('utf-8'))        
    if option == 'Harry Potter':
       st.button("[1]Harry Potter -  The Boy Who Lived")
       st.button("[2]Harry Potter -  The Worst Birthday")
