@@ -36,7 +36,8 @@ if choice == 'Fiction Books':
       if st.button("Adventures of Huckleberry Finn"):
          file_url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/Adventures-of-Huckleberry-Finn.txt'
          for line in urllib.request.urlopen(file_url):
-            print(line.decode('utf-8'))        
+            st.write(line.decode('utf-8'))  
+            
    if option == 'Harry Potter':
       st.button("[1]Harry Potter -  The Boy Who Lived")
       st.button("[2]Harry Potter -  The Worst Birthday")
