@@ -41,13 +41,13 @@ if choice == 'Fiction Books':
          st.write(df['Description'][0])
             
    if option == 'Harry Potter':
-      st.button("[1]Harry Potter -  The Boy Who Lived")
-      st.button("[2]Harry Potter -  The Worst Birthday")
-      st.button("[3]Harry Potter -  Owl Post")
-      st.button("[4]Harry Potter -  The Riddle House")
-      st.button("[5]Harry Potter -  Dudley Demented")
-      st.button("[6]Harry Potter -  The Other Minister")
-      st.button("[7]Harry Potter -  The Dark Lord Ascending")
+      st.button("[1]Harry Potter - The Boy Who Lived")
+      st.button("[2]Harry Potter - The Worst Birthday")
+      st.button("[3]Harry Potter - Owl Post")
+      st.button("[4]Harry Potter - The Riddle House")
+      st.button("[5]Harry Potter - Dudley Demented")
+      st.button("[6]Harry Potter - The Other Minister")
+      st.button("[7]Harry Potter - The Dark Lord Ascending")
 
    df = pd.DataFrame(
    np.random.randn(15, 2),
