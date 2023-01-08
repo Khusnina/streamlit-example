@@ -24,8 +24,10 @@ if choice == 'Fiction Books':
    st.write("List of Fiction Book")
    st.write(df.head(20))
    st.write(df.info())
-   st.button("Clean")
-   if st.button("Clean")
+   
+   clean = st.radio("Cleaning the data",('Clean'))
+   if clean == 'Clean':
+      st.write('You selected clean.')
       def remove_newlines_tabs(df):
          # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
          df['Description'] = df['Description'].str.replace('\n\n\n\n', ' ')
@@ -40,7 +42,7 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace('*', '')
       df['Description'] = df['Description'].replace('; ', '')
       df['Description'] = df['Description'].replace(', ', '')
-      df['Description'] = df['Description'].replace('â', '')
+      st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))
       
    option = st.selectbox('Select Category', category)
