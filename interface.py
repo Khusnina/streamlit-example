@@ -47,9 +47,7 @@ if choice == 'Fiction Books':
       st.button("Ella Eris and The Pirates of Redemption")
       
       if st.button("Adventures of Huckleberry Finn"):
-         url1 = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/Adventures-of-Huckleberry-Finn.txt'
-         book1 = pd.read_csv(url1)
-         print(book1.head())
+         st.write(df['Description'][0])
             
    if option == 'Harry Potter':
       st.button("[1]Harry Potter -  The Boy Who Lived")
