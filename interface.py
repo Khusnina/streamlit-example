@@ -48,11 +48,6 @@ if choice == 'Fiction Books':
       st.button("[5]Harry Potter - Dudley Demented")
       st.button("[6]Harry Potter - The Other Minister")
       st.button("[7]Harry Potter - The Dark Lord Ascending")
-
-   df = pd.DataFrame(
-   np.random.randn(15, 2),
-   columns=('col %d' % i for i in range(2)))
-   st.table(df)
    
 if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
