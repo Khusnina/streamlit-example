@@ -15,7 +15,7 @@ choice = st.sidebar.selectbox("Select Activity", activities)
 
 if choice == 'Introduction':
    st.write("The extractive text summarization system creates summaries by identifying, extracting the sentences, and subsequently combining the most important sentences in an online book to generate in form of a summary.")
-
+   
 if choice == 'Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>", unsafe_allow_html=True)
    uploaded_file = st.file_uploader("Choose a file")
@@ -35,7 +35,10 @@ if choice == 'Fiction Books':
    category = ["Story","Harry Potter"]
    url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/listBook.csv'
    df = pd.read_csv(url)
+   st.write("List of Fiction Book")
    st.write(df.head(20))
+   st.write("Information")
+   st.write(df.info(20))
    option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.button("Adventures of Huckleberry Finn")
@@ -47,8 +50,8 @@ if choice == 'Fiction Books':
       st.button("Ella Eris and The Pirates of Redemption")
       
       if st.button("Adventures of Huckleberry Finn"):
-         st.write(df[Title][0])
-         st.write(df[Description][0])
+         st.write(df['Title'][0])
+         st.write(df['Description'][0])
             
    if option == 'Harry Potter':
       st.button("[1]Harry Potter -  The Boy Who Lived")
