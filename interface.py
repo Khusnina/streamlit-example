@@ -27,8 +27,6 @@ if choice == 'Fiction Books':
    option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.button("Adventures of Huckleberry Finn")
-      if st.button("Adventures of Huckleberry Finn"):
-         st.write("bla")
       st.button("A Ghost of A Chance")
       st.button("Grimm Fairy Tales")
       st.button("Anais of Brightshire")
@@ -36,6 +34,10 @@ if choice == 'Fiction Books':
       st.button("Ardath")
       st.button("Heart of Darkness")
       st.button("Ella Eris and The Pirates of Redemption")
+      book1 = st.checkbox('Adventures of Huckleberry Finn')
+      if book1:
+         st.write('bla')
+         st.write(df['Description'][0])
             
    if option == 'Harry Potter':
       st.button("[1]Harry Potter - The Boy Who Lived")
