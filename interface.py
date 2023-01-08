@@ -23,6 +23,9 @@ if choice == 'Fiction Books':
       df = pd.read_csv(uploaded_file)
       st.write(dataframe)
    category = ["Story","Harry Potter"]
+   url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/listBook.csv'
+   df = pd.read_csv(url)
+   print(df.head())
    option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.button("Adventures of Huckleberry Finn")
@@ -34,9 +37,9 @@ if choice == 'Fiction Books':
       st.button("Ella Eris and The Pirates of Redemption")
       
       if st.button("Adventures of Huckleberry Finn"):
-         file_url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/Adventures-of-Huckleberry-Finn.txt'
-         for line in urllib.request.urlopen(file_url):
-            st.write(line.decode('utf-8'))  
+         url1 = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/Adventures-of-Huckleberry-Finn.txt'
+         book1 = pd.read_csv(url1)
+         print(book1.head())
             
    if option == 'Harry Potter':
       st.button("[1]Harry Potter -  The Boy Who Lived")
