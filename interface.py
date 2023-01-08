@@ -31,6 +31,7 @@ if choice == 'Fiction Books':
       st.write(string_data)
       # Can be used wherever a "file-like" object is accepted:
       dataframe = pd.read_csv(uploaded_file)
+      dataframe.head()
       st.write(dataframe)
    category = ["Story","Harry Potter"]
    url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/listBook.csv'
