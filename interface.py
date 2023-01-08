@@ -63,8 +63,8 @@ if choice == 'Fiction Books':
       st.write("Select the box to view the content")
       book1 = st.checkbox('Adventures of Huckleberry Finn')
       if book1:
-         st.write(df['Title'][0])
-         st.write(df['Description'][0])
+         st.text_area(df['Title'][0])
+         st.text_area(df['Description'][0])
       book2 = st.checkbox('A Ghost of A Chance')
       if book2:
          st.write(df['Title'][1])
