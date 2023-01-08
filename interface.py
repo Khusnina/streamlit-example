@@ -20,7 +20,17 @@ if choice == 'Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>FICTIONS BOOKS</h2>", unsafe_allow_html=True)
    uploaded_file = st.file_uploader("Choose a file")
    if uploaded_file is not None:
-      df = pd.read_csv(uploaded_file)
+      # To read file as bytes:
+      bytes_data = uploaded_file.getvalue()
+      st.write(bytes_data)
+      # To convert to a string based IO:
+      stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+      st.write(stringio)
+      # To read file as string:
+      string_data = stringio.read()
+      st.write(string_data)
+      # Can be used wherever a "file-like" object is accepted:
+      dataframe = pd.read_csv(uploaded_file)
       st.write(dataframe)
    category = ["Story","Harry Potter"]
    url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/listBook.csv'
