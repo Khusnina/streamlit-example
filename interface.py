@@ -39,13 +39,15 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace('*', '')
       df['Description'] = df['Description'].replace('; ', '')
       df['Description'] = df['Description'].replace(', ', '')
+      stop = stopwords.words('english')
+      df['Description']= df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
       st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))
       @st.cache
       def convert_df(df):
       # IMPORTANT: Cache the conversion to prevent computation on every rerun
       return df.to_csv().encode('utf-8')
-      csv = convert_df(my_large_df)
+      csv = convert_df(df)
       st.download_button(
          label = "Download data in CSV",
          data = csv,
