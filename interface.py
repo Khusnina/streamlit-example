@@ -26,27 +26,71 @@ if choice == 'Fiction Books':
    st.write(df.info())
    option = st.selectbox('Select Category', category)
    if option == 'Story':
-      st.button("Adventures of Huckleberry Finn")
-      st.button("A Ghost of A Chance")
-      st.button("Grimm Fairy Tales")
-      st.button("Anais of Brightshire")
-      st.button("A Princess of Mars")
-      st.button("Ardath")
-      st.button("Heart of Darkness")
-      st.button("Ella Eris and The Pirates of Redemption")
+      st.write("Select the box to view the content")
       book1 = st.checkbox('Adventures of Huckleberry Finn')
       if book1:
-         st.write('bla')
+         st.write(df['Title'][0])
          st.write(df['Description'][0])
+      book2 = st.checkbox('A Ghost of A Chance')
+      if book2:
+         st.write(df['Title'][1])
+         st.write(df['Description'][1])
+      book3 = st.checkbox('Grimm Fairy Tales')
+      if book3:
+         st.write(df['Title'][2])
+         st.write(df['Description'][2])
+      book4 = st.checkbox('Anais of Brightshire')
+      if book4:
+         st.write(df['Title'][3])
+         st.write(df['Description'][3])
+      book5 = st.checkbox('A Princess of Mars')
+      if book5:
+         st.write(df['Title'][4])
+         st.write(df['Description'][4])
+      book6 = st.checkbox('Ardath')
+      if book6:
+         st.write(df['Title'][5])
+         st.write(df['Description'][5])
+      book7 = st.checkbox('Heart of Darkness')
+      if book7:
+         st.write(df['Title'][6])
+         st.write(df['Description'][6])
+      book8 = st.checkbox('Ella Eris and The Pirates of Redemption')
+      if book8:
+         st.write(df['Title'][7])
+         st.write(df['Description'][7])
             
    if option == 'Harry Potter':
-      st.button("[1]Harry Potter - The Boy Who Lived")
-      st.button("[2]Harry Potter - The Worst Birthday")
-      st.button("[3]Harry Potter - Owl Post")
-      st.button("[4]Harry Potter - The Riddle House")
-      st.button("[5]Harry Potter - Dudley Demented")
-      st.button("[6]Harry Potter - The Other Minister")
-      st.button("[7]Harry Potter - The Dark Lord Ascending")
+      st.write("Select the box to view the content")
+      book9 = st.checkbox('[1]Harry Potter - The Boy Who Lived')
+      if book9:
+         st.write(df['Title'][8])
+         st.write(df['Description'][8])
+      book10 = st.checkbox('[2]Harry Potter - The Worst Birthday')
+      if book10:
+         st.write(df['Title'][9])
+         st.write(df['Description'][9])
+      book11 = st.checkbox('[3]Harry Potter - Owl Post')
+      if book11:
+         st.write(df['Title'][10])
+         st.write(df['Description'][10])
+      book12 = st.checkbox('[4]Harry Potter - The Riddle House')
+      if book12:
+         st.write(df['Title'][11])
+         st.write(df['Description'][11])
+      book13 = st.checkbox('[5]Harry Potter - Dudley Demented')
+      if book13:
+         st.write(df['Title'][12])
+         st.write(df['Description'][12])
+      book14 = st.checkbox('[6]Harry Potter - The Other Minister')
+      if book14:
+         st.write(df['Title'][13])
+         st.write(df['Description'][13])
+      book15 = st.checkbox('[7]Harry Potter - The Dark Lord Ascending')
+      if book15:
+         st.write(df['Title'][14])
+         st.write(df['Description'][14])
+      
    
 if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
