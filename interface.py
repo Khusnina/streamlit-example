@@ -38,7 +38,7 @@ if choice == 'Fiction Books':
    st.write("List of Fiction Book")
    st.write(df.head(20))
    st.write("Information")
-   df.info()
+   st.write(df.info(verbose = False))
    option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.button("Adventures of Huckleberry Finn")
