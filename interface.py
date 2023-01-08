@@ -25,7 +25,7 @@ if choice == 'Fiction Books':
    st.write(df.head(20))
    st.write(df.info())
    
-   clean = st.radio("Cleaning the data",('Clean'))
+   clean = st.radio("Cleaning the data",('Clean', 'Do not clean'))
    if clean == 'Clean':
       st.write('You selected clean.')
       # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
