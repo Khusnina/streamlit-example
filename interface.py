@@ -6,8 +6,6 @@ import requests
 import urllib
 from urllib.request import urlopen
 import urllib3
-import nltk
-from nltk.corpus import stopwords
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
@@ -41,8 +39,6 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace('*', '')
       df['Description'] = df['Description'].replace('; ', '')
       df['Description'] = df['Description'].replace(', ', '')
-      stop = stopwords.words('english')
-      df['Description']= df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
       st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))
       
