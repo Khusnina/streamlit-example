@@ -28,16 +28,13 @@ if choice == 'Fiction Books':
    clean = st.radio("Cleaning the data",('Clean'))
    if clean == 'Clean':
       st.write('You selected clean.')
-      def remove_newlines_tabs(df):
-         # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
-         df['Description'] = df['Description'].str.replace('\n\n\n\n', ' ')
-         df['Description'] = df['Description'].str.replace('\n\n', ' ')
-         df['Description'] = df['Description'].str.replace('\n', ' ')
-         df['Description'] = df['Description'].str.replace('/', ' ')
-         df['Description'] = df['Description'].str.replace('    ', ' ')
-         Formatted_text = df['Description'].str.replace('   ', ' ')
-      return Formatted_text
-      df['Description'] = remove_newlines_tabs(df)
+      # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
+      df['Description'] = df['Description'].str.replace('\n\n\n\n', ' ')
+      df['Description'] = df['Description'].str.replace('\n\n', ' ')
+      df['Description'] = df['Description'].str.replace('\n', ' ')
+      df['Description'] = df['Description'].str.replace('/', ' ')
+      df['Description'] = df['Description'].str.replace('    ', ' ')
+      df['Description'] = df['Description'].str.replace('   ', ' ')
       df['Description'] = df['Description'].replace('? ', '. ')
       df['Description'] = df['Description'].replace('*', '')
       df['Description'] = df['Description'].replace('; ', '')
