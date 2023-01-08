@@ -34,11 +34,11 @@ if choice == 'Fiction Books':
       st.write(dataframe)
    category = ["Story","Harry Potter"]
    url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/listBook.csv'
-   df = pd.read_csv(url)
+   df = pd.read_csv(url,encoding="latin-1")
    st.write("List of Fiction Book")
    st.write(df.head(20))
    st.write("Information")
-   st.write(df.info())
+   df.info()
    option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.button("Adventures of Huckleberry Finn")
