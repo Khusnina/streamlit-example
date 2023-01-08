@@ -38,9 +38,7 @@ if choice == 'Fiction Books':
       if st.button("Adventures of Huckleberry Finn"):
          url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/listBook.csv'
          df = pd.read_csv(url,encoding="latin-1")
-         st.write(df.iloc(0))
-         st.write(df['Title'][0])
-         st.write(df['Description'][0])
+         st.write(df['Title'])
             
    if option == 'Harry Potter':
       st.button("[1]Harry Potter - The Boy Who Lived")
