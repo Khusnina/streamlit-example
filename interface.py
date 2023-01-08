@@ -41,6 +41,18 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace(', ', '')
       st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))
+      @st.cache
+      def convert_df(df):
+      # IMPORTANT: Cache the conversion to prevent computation on every rerun
+      return df.to_csv().encode('utf-8')
+      csv = convert_df(my_large_df)
+      st.download_button(
+         label = "Download data in CSV",
+         data = csv,
+         file_name = 'listBookClean.csv',
+         mime = 'text/csv',
+       )
+      
    if clean == 'Do not clean':
       st.write('You do not want to clean the list.')
       
