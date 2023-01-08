@@ -35,9 +35,7 @@ if choice == 'Fiction Books':
       st.button("Ella Eris and The Pirates of Redemption")
       
       if st.button("Adventures of Huckleberry Finn"):
-         row = df.iloc[0]
-         st.display(row)
-         st.write(df['Title'][0])
+         st.write(df.head())
          st.write(df['Description'][0])
             
    if option == 'Harry Potter':
