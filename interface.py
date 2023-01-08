@@ -25,9 +25,9 @@ if choice == 'Fiction Books':
    st.write(df.head(20))
    st.write(df.info())
    
-   clean = st.radio("Cleaning the data",('Clean', 'Do not clean'))
+   clean = st.radio("Cleaning the data",('Select', 'Clean', 'Do not clean'))    
    if clean == 'Clean':
-      st.write('You selected clean.')
+      st.write('You want to clean the list.')
       # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
       df['Description'] = df['Description'].str.replace('\n\n\n\n', ' ')
       df['Description'] = df['Description'].str.replace('\n\n', ' ')
@@ -41,6 +41,8 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace(', ', '')
       st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))
+   if clean == 'Do not clean':
+      st.write('You do not want to clean the list.')
       
    option = st.selectbox('Select Category', category)
    if option == 'Story':
