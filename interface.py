@@ -36,7 +36,7 @@ if choice == 'Fiction Books':
       
       if st.button("Adventures of Huckleberry Finn"):
          row = df.iloc[0]
-         st.write(row)
+         st.display(row)
          st.write(df['Title'][0])
          st.write(df['Description'][0])
             
