@@ -36,8 +36,7 @@ if choice == 'Fiction Books':
       st.button("Ella Eris and The Pirates of Redemption")
       
       if st.button("Adventures of Huckleberry Finn"):
-         text1 = "hjhkhkgjj"
-         book1 = st.text_area("Adventures of Huckleberry Finn",text1)
+         st.write("bla")
             
    if option == 'Harry Potter':
       st.button("[1]Harry Potter - The Boy Who Lived")
