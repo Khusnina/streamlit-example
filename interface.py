@@ -25,6 +25,24 @@ if choice == 'Fiction Books':
    st.write(df.head(20))
    st.write(df.info())
    st.button("Clean")
+   if st.button("Clean")
+      def remove_newlines_tabs(df):
+         # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
+         df['Description'] = df['Description'].str.replace('\n\n\n\n', ' ')
+         df['Description'] = df['Description'].str.replace('\n\n', ' ')
+         df['Description'] = df['Description'].str.replace('\n', ' ')
+         df['Description'] = df['Description'].str.replace('/', ' ')
+         df['Description'] = df['Description'].str.replace('    ', ' ')
+         Formatted_text = df['Description'].str.replace('   ', ' ')
+      return Formatted_text
+      df['Description'] = remove_newlines_tabs(df)
+      df['Description'] = df['Description'].replace('? ', '. ')
+      df['Description'] = df['Description'].replace('*', '')
+      df['Description'] = df['Description'].replace('; ', '')
+      df['Description'] = df['Description'].replace(', ', '')
+      df['Description'] = df['Description'].replace('â', '')
+      st.write(df.head(20))
+      
    option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.write("Select the box to view the content")
