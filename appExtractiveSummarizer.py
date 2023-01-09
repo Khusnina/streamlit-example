@@ -251,12 +251,18 @@ if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
    with st.form(key = 'nlpForm'):
       raw_text = st.text_area("Original Content","Enter text here")
+      filename = st.text_input('Enter a file path:')
+      try:
+         with open(filename) as input:
+            st.text(input.read())
+      except FileNotFoundError:
+         st.error('File not found.')
       uploaded_file = st.file_uploader("Choose a file")
       if uploaded_file is not None:
          # Can be used wherever a "file-like" object is accepted:
          dataframe = pd.read_csv(uploaded_file)
          st.write("filename:", uploaded_file.name)
-      content = st.button('Show the content')
+      content = st.checkbox('Show the content')
       if content:
          st.write(dataframe)
          st.write(dataframe.head(20))
