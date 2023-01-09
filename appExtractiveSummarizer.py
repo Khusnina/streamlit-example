@@ -303,7 +303,7 @@ if choice == 'Summarize':
       Df.info(buf=buffer)
       s = buffer.getvalue()
       st.text(s)
-      st.button('Summarize file')
+      st.button("Summarize file")
       if st.button('Summarize file'):
          st.info("Results")
          st.info("Tokens")
