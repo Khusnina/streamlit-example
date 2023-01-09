@@ -255,7 +255,8 @@ if choice == 'Summarize':
       if uploaded_file is not None:
          # Can be used wherever a "file-like" object is accepted:
          dataframe = pd.read_csv(uploaded_file)
-      content = st.checkbox('Show the content')
+         st.write("filename:", uploaded_file.name)
+      content = st.button('Show the content')
       if content:
          st.write(dataframe)
          st.write(dataframe.head(20))
