@@ -6,6 +6,9 @@ import requests
 import urllib
 from urllib.request import urlopen
 import urllib3
+import spacy 
+from spacy.lang.en.stop_words import STOP_WORDS
+from string import punctuation
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
@@ -29,7 +32,7 @@ if choice == 'Fiction Books':
    clean = st.radio("Cleaning the data",('Select', 'Clean', 'Do not clean')) 
    if clean == 'Select':
       st.info('You do not want to clean the list.', icon="ℹ️")
-   elif clean == 'Clean':
+   if clean == 'Clean':
       st.info('You want to clean the list.', icon="ℹ️")
       # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
       df['Description'] = df['Description'].str.replace('\n\n\n\n', ' ')
@@ -43,10 +46,12 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace('; ', '')
       df['Description'] = df['Description'].replace(', ', '')
       df['Description'] = df['Description'].replace('â ', '')
+      stop_words = list(STOP_WORDS)
+      st.write('Few stop words:\n', stop_words[:10])
       st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))  
-      elif clean == 'Do not clean':
-         st.info('You do not want to clean the list.', icon="ℹ️")
+   if clean == 'Do not clean':
+      st.info('You do not want to clean the list.', icon="ℹ️")
    option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.write("Select the box to view the content")
