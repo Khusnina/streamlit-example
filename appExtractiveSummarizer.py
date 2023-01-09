@@ -34,11 +34,11 @@ if choice == 'Fiction Books':
    s = buffer.getvalue()
    st.text(s)
   
-   clean = st.radio("Cleaning the data",('Select', 'Clean', 'Do not clean')) 
+   clean = st.radio("Cleaning the data",('Select', 'Process', 'No Process')) 
    if clean == 'Select':
-      st.info('Select one either to clean or not.', icon="ℹ️")
-   if clean == 'Clean':
-      st.info('You want to clean the list.', icon="ℹ️")
+      st.info('Select one either to process or not.', icon="ℹ️")
+   if clean == 'Process':
+      st.info('You want to process the list.', icon="ℹ️")
       # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
       df['Description'] = df['Description'].str.replace('\n\n\n\n', ' ')
       df['Description'] = df['Description'].str.replace('\n\n', ' ')
@@ -54,6 +54,10 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace('â', '')
       st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))
+      st.download_button("Download CSV",
+                         df.to_csv(),
+                         file_name = 'listBook.csv',
+                         mime = 'text/csv')
       stopwords = st.checkbox('Stopwords')
       if stopwords:
          stop_words = list(STOP_WORDS)
@@ -178,9 +182,10 @@ if choice == 'Fiction Books':
 "you'll've": "you will have",
 "you're": "you are",
 "you've": "you have"
-""")
-   if clean == 'Do not clean':
-      st.info('You do not want to clean the list.', icon="ℹ️")
+""")  
+         
+   if clean == 'No Process':
+      st.info('You do not want to process the list.', icon="ℹ️")
    option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.write("Select the box to view the content")
@@ -231,7 +236,7 @@ if choice == 'Fiction Books':
          st.write(df['Title'][7])
          st.write(df['Description'][7])
          content8 = df['Description'][7]
-         st.download_button('Download', content1)
+         st.download_button('Download', content8)
             
    if option == 'Harry Potter':
       st.write("Select the box to view the content")
