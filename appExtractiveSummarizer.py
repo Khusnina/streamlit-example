@@ -296,7 +296,6 @@ if choice == 'Summarize':
       Df = pd.read_csv(uploaded_file)
       st.write("Dataframe of List Fiction Book")
       st.dataframe(Df)
-      st.button("Summarize file")
       st.write("Shape")
       st.write(Df.shape)
       st.write("Info")
@@ -304,7 +303,8 @@ if choice == 'Summarize':
       Df.info(buf=buffer)
       s = buffer.getvalue()
       st.text(s)
-      if st.button("Summarize file"):
+      st.button('Summarize file')
+      if st.button('Summarize file'):
          st.info("Results")
          st.info("Tokens")
          st.info("Words:")
