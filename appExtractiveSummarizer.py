@@ -5,7 +5,10 @@ import io
 import nltk
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize 
-from nltk.stem import WordNetLemmatizer 
+from nltk.stem import WordNetLemmatizer
+import spacy 
+from spacy.lang.en.stop_words import STOP_WORDS
+from string import punctuation
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
