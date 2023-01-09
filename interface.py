@@ -6,6 +6,7 @@ import requests
 import urllib
 from urllib.request import urlopen
 import urllib3
+from textblob import TextBlob
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
@@ -44,7 +45,10 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace(', ', '')
       df['Description'] = df['Description'].replace('â ', '')
       st.write("List of Fiction Book after cleaning")
-      st.write(df.head(20))  
+      st.write(df.head(20))
+      stopwords = st.checkbox('Stopwords')
+      if stopwords:
+         st.write("\n['he','she','both', 'hereby', 'because', '’m', 'beyond', 'give', 'becoming', 'so', 'sometime', 'whereupon', 'what', 'none', 'somehow', 'why', 'must', 'nothing', 'when', 'whereby', 'thence', 'well', 'already', 'although', 'formerly', 'anyone', 'around', 'eleven', 'should', 'anything', 'he', 'made', 'bottom', 'with', 'either', 'whether', 'amount', 'five', 'nor', 'a', 'itself', 'thereupon', 'not', 'otherwise', 'per', 'just', 'few', 'these', 'every', 'though', 'herein', 'does', 'quite', 'yourselves', 'afterwards', 'the', 'out', 'part', 'however', 'never', 'was', 'less', 'whatever', 'nine', 'keep', 'third', 'would', '’ll', 'her', 'anywhere', 'move', 'indeed', 'whose', 'upon', 'along', 'call', 'is', 'became', 'down', 'n‘t', 'hers', 'wherever', 'fifteen', 'see', 'top', 'no', 'hence', '’s', 'himself', 'that', 'd', 'two', 'herself', 'seem', 'to', 'there', 'several', 'anyhow', 'seemed', '‘ve', 'elsewhere', 'say', 'others', 'therefore', 'then', 'anyway', 'who', 'unless', 'further', 'noone', 'wherein', 'nobody', 'latter', 'm', 'of', 'behind', 'everyone', 'last', 'due', 'perhaps', 'side', 'thru', 'whither', 'now', 'yourself', 'latterly', 'will', 'against', 'sixty', 'him', 'my', 'four', 'but', 'its', 'most', 'i', 're', 'many', 'about', 'very', 'still', '‘d', 'between', 'forty', 'were', 'beforehand', 'even', 'whenever', 'something', 'or', 'same', 'them', 'besides', 'if', 'have', 'had', 'up', 'back', 'at', 'always', 're', 'above', 'get', 'under', 'for', 'serious', 'themselves', 'his', 'really', 'than', 'thus', 'nevertheless', 'some', 'whom', 'sometimes', 'amongst', 'throughout', 'n’t', 'as', 'regarding', 'they', 'might', 'those', 'are', 'neither', 'whole', 'within', 'yours', 'thereby', 'another', 's', 'former', 'using', 'towards', 'other', 'hereupon', 'from', 'six', 'after', 'me', 'among', 'please', 'whence', 'below', 'may', 'rather', 'somewhere', 'into', '’ve', 'together', 'we', 'ever', 'again', 'various', 'more', 'through', '’d', 'doing', 'our', 'toward', 'us', 'myself', 'front', 'before', 'meanwhile', 'thereafter', 'show', 'often', 'has', 'any', 'empty', 'everything', 'hereafter', 'did', 'their', 'while', 'without', 'over', 'your', 'enough', 'by', 'and', '‘ll', 'on', 'been', 'during', 'name', 'eight', 'make', 'seeming', 'take', 'an', 'ourselves', 'moreover', 'namely', 'become', 'can', 'much', 'she', 'alone', 'seems', 'also', 'beside', 'could', 'ten', 'next', 'whoever', 'hundred', 'put', 'cannot', 'it', 'least', 'first', 'here', 'all', 'twenty', 'whereafter', 'three', 'fifty', 'whereas', 'am', 'own', 'off', 'therein', 'almost', 'm', 'only', 'too', 'this', 'being', 'used', 'twelve', 'across', 'someone', 'full', 'how', 'nowhere', 'one', 'mine', 'each', '‘re', 'done', '‘s', 'in', 'such', 'll', 've', 'onto', 'since', 'do', 'yet', 'except', 'once', 'go', 'everywhere', 'ca', 'where', 'be', 'becomes', 'else', 'mostly', 'ours', 'which', 'until', 'you', '’re', 'via']")
    if clean == 'Do not clean':
       st.info('You do not want to clean the list.', icon="ℹ️")
    option = st.selectbox('Select Category', category)
@@ -117,7 +121,6 @@ if choice == 'Fiction Books':
    
 if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
-   agree = st.checkbox('Show sentence')
    with st.form(key = 'nlpForm'):
       raw_text = st.text_area("Original Content","Enter text here")
       uploaded_file = st.file_uploader("Choose a file")
@@ -135,6 +138,12 @@ if choice == 'Summarize':
          dataframe = pd.read_csv(uploaded_file)
          st.write(dataframe)
       submit_button = st.form_submit_button(label = 'Summarize')
+   col1,col2 = st.columns(2)
+   if submit_button:
+      with col1:
+         st.info("Results")
+      with col2:
+         st.info("Tokens")
    """
    if st.button("Summarize"):
       st.write(raw_text)
