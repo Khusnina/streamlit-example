@@ -41,6 +41,7 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace(', ', '')
       st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))
+      st.write(df.shape)
       
    if clean == 'Do not clean':
       st.write('You do not want to clean the list.')
@@ -50,8 +51,8 @@ if choice == 'Fiction Books':
       st.write("Select the box to view the content")
       book1 = st.checkbox('Adventures of Huckleberry Finn')
       if book1:
-         st.text(df['Title'][0])
-         st.text(df['Description'][0])
+         st.write(df['Title'][0])
+         st.write(df['Description'][0])
       book2 = st.checkbox('A Ghost of A Chance')
       if book2:
          st.write(df['Title'][1])
