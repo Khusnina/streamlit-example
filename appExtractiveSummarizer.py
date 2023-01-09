@@ -255,6 +255,7 @@ if choice == 'Summarize':
       try:
          with open(filename) as input:
             st.text(input.read())
+            st.write(input)
       except FileNotFoundError:
          st.error('File not found.')
       uploaded_file = st.file_uploader("Choose a file")
