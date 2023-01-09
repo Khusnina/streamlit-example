@@ -250,29 +250,16 @@ if choice == 'Fiction Books':
    
 if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
-   with st.form(key = 'nlpForm'):
+   with st.container(key = 'nlpForm'):
       raw_text = st.text_area("Original Content","Enter text here")
       uploaded_file = st.file_uploader("Choose a file",type=["csv"])
       if uploaded_file is not None:
          st.write(type(uploaded_file))
          file_details = {"filename":uploaded_file.name,"filetype":uploaded_file.type,"filesize":uploaded_file.size}
          st.write(file_details)
-         # To read file as bytes:
-         bytes_data = uploaded_file.getvalue()
-         st.write(bytes_data)
-
-         # To convert to a string based IO:
-         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-         st.write(stringio)
-
-         # To read file as string:
-         string_data = stringio.read()
-         st.write(string_data)
-
-         # Can be used wherever a "file-like" object is accepted:
          dataframe = pd.read_csv(uploaded_file)
          st.dataframe(dataframe)
-      summarize = st.form_submit_button("Summarize")
+      st.button("Summarize")
    """
    col1,col2 = st.columns(2)
    if summarize:
