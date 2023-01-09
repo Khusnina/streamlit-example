@@ -264,8 +264,8 @@ if choice == 'Summarize':
          st.write(string_data)
          # Can be used wherever a "file-like" object is accepted:
          dataframe = pd.read_csv(uploaded_file)
-         list = st.checkbox('Show the content')
-         if list:
+         data = st.checkbox('Show the content')
+         if data:
             st.write(dataframe)
             st.write(dataframe.head(20))
       summarize = st.form_submit_button("Summarize")
