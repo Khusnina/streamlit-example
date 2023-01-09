@@ -41,7 +41,7 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace(', ', '')
       st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))
-      st.write(df.shape)
+      st.write(df.shape())
       
    if clean == 'Do not clean':
       st.info('You do not want to clean the list.', icon="ℹ️")
