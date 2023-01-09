@@ -45,7 +45,7 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace('â ', '')
       st.write("List of Fiction Book after cleaning")
       st.write(df.head(20))  
-      else:
+      elif clean == 'Do not clean':
          st.info('You do not want to clean the list.', icon="ℹ️")
    option = st.selectbox('Select Category', category)
    if option == 'Story':
