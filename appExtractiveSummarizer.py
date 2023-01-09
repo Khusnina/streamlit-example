@@ -43,6 +43,7 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].str.replace('\n\n\n\n', ' ')
       df['Description'] = df['Description'].str.replace('\n\n', ' ')
       df['Description'] = df['Description'].str.replace('\n', ' ')
+      df['Description'] = df['Description'].str.replace('\r', '')
       df['Description'] = df['Description'].str.replace('/', ' ')
       df['Description'] = df['Description'].str.replace('    ', ' ')
       df['Description'] = df['Description'].str.replace('   ', ' ')
@@ -251,8 +252,11 @@ if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
    with st.form(key = 'nlpForm'):
       raw_text = st.text_area("Original Content","Enter text here")
-      uploaded_file = st.file_uploader("Choose a file")
+      uploaded_file = st.file_uploader("Choose a file",type=["csv"])
       if uploaded_file is not None:
+         st.write(type(uploaded_file))
+         file_details = {"filename":uploaded_file.name,"filetype":uploaded_file.type,"filesize":uploaded_file.size}
+         st.write(file_details)
          # To read file as bytes:
          bytes_data = uploaded_file.getvalue()
          st.write(bytes_data)
@@ -267,12 +271,7 @@ if choice == 'Summarize':
 
          # Can be used wherever a "file-like" object is accepted:
          dataframe = pd.read_csv(uploaded_file)
-         st.write(dataframe)
-         st.write("filename:", uploaded_file.name)
-      content = st.checkbox('Show the content')
-      if content:
-         st.write(dataframe)
-         st.write(dataframe.head(20))
+         st.dataframe(dataframe)
       summarize = st.form_submit_button("Summarize")
    """
    col1,col2 = st.columns(2)
