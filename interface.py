@@ -27,11 +27,10 @@ if choice == 'Fiction Books':
    st.write("Shape")
    st.write(df.shape)
    st.write("Info")
-   with st.form(key = 'infoForm'):
-      buffer = io.StringIO()
-      df.info(buf=buffer)
-      s = buffer.getvalue()
-      st.text(s)
+   buffer = io.StringIO()
+   df.info(buf=buffer)
+   s = buffer.getvalue()
+   st.text(s)
   
    clean = st.radio("Cleaning the data",('Select', 'Clean', 'Do not clean')) 
    if clean == 'Select':
