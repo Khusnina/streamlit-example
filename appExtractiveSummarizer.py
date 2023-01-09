@@ -284,7 +284,7 @@ if choice == 'Fiction Books':
          st.download_button('Download', content15)
    
 if choice == 'Summarize':
-   st.subheader("EXTRACTIVE TEXT SUMMARIZER")
+   st.markdown("<h2 style='text-align: center; color: white;'>EXTRACTIVE TEXT SUMMARIZER</h2>", unsafe_allow_html=True)
    with st.form(key = 'nlpForm'):
       raw_text = st.text_area("Original Content","Enter text here")
       submitted = st.form_submit_button("Summarize")
