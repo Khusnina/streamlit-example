@@ -52,7 +52,7 @@ if choice == 'Fiction Books':
       df['Description'] = df['Description'].replace('; ', '')
       df['Description'] = df['Description'].replace(', ', '')
       df['Description'] = df['Description'].replace('â', '')
-      st.write("List of Fiction Book after cleaning")
+      st.write("List of Fiction Book after processing")
       st.write(df.head(20))
       st.download_button("Download CSV",
                          df.to_csv(),
