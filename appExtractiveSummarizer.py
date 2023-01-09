@@ -9,7 +9,6 @@ from nltk.stem import WordNetLemmatizer
 import spacy 
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
-import pyperclip
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
@@ -195,7 +194,6 @@ if choice == 'Fiction Books':
          st.write(df['Title'][0])
          st.write(df['Description'][0])
          content1 = df['Description'][0]
-         pyperclip.copy(content1)
          st.download_button('Download', content1)
       book2 = st.checkbox('A Ghost of A Chance')
       if book2:
@@ -309,6 +307,7 @@ if choice == 'Summarize':
          st.text(s)
          st.info("Results")
          st.info("Tokens")
+         st.info("Words:")
    """
    col1,col2 = st.columns(2)
    if summarize:
