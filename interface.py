@@ -116,7 +116,6 @@ if choice == 'Fiction Books':
       if book15:
          st.write(df['Title'][14])
          st.write(df['Description'][14])
-      
    
 if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
@@ -149,9 +148,6 @@ if choice == 'Summarize':
       st.button("Copy text")
       st.write("Words:")
    """
-      
-   if agree:
-    st.write('---')
  
 if choice == 'Statistics':
    st.write("")
