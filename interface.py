@@ -6,6 +6,8 @@ import requests
 import urllib
 from urllib.request import urlopen
 import urllib3
+import nltk
+nltk.download(‘stopwords’)
 import spacy 
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
