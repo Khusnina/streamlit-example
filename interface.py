@@ -45,7 +45,7 @@ if choice == 'Fiction Books':
       
    if clean == 'Do not clean':
       st.write('You do not want to clean the list.')
-      
+      st.info('This is a purely informational message', icon="ℹ️")
    option = st.selectbox('Select Category', category)
    if option == 'Story':
       st.write("Select the box to view the content")
