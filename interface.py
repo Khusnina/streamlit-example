@@ -118,7 +118,7 @@ if choice == 'Fiction Books':
 if choice == 'Summarize':
    st.subheader("EXTRACTIVE TEXT SUMMARIZER")
    agree = st.checkbox('Show sentence')
-   with st.form(key = 'nlpForm')
+   with st.form(key = 'nlpForm'):
       raw_text = st.text_area("Original Content","Enter text here")
       uploaded_file = st.file_uploader("Choose a file")
       if uploaded_file is not None:
