@@ -188,6 +188,8 @@ if choice == 'Fiction Books':
       if book1:
          st.write(df['Title'][0])
          st.write(df['Description'][0])
+         content1 = df['Description'][0]
+         st.download_button('Download', content1)
       book2 = st.checkbox('A Ghost of A Chance')
       if book2:
          st.write(df['Title'][1])
