@@ -265,9 +265,10 @@ if choice == 'Summarize':
          # Can be used wherever a "file-like" object is accepted:
          dataframe = pd.read_csv(uploaded_file)
          st.write(dataframe)
-      st.button("Summarize")
+         st.write(dataframe.head(20))
+      summarize = st.form_submit_button("Summarize")
    col1,col2 = st.columns(2)
-   if st.button("Summarize"):
+   if summarize:
       st.write(raw_text)
       st.button("Copy text")
       st.write("Words:")
