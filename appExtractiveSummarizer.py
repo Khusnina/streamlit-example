@@ -33,7 +33,7 @@ if choice == 'Fiction Books':
   
    clean = st.radio("Cleaning the data",('Select', 'Clean', 'Do not clean')) 
    if clean == 'Select':
-      st.info('You do not want to clean the list.', icon="ℹ️")
+      st.info('Select one either to clean or not.', icon="ℹ️")
    if clean == 'Clean':
       st.info('You want to clean the list.', icon="ℹ️")
       # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
