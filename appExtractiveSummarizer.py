@@ -297,28 +297,17 @@ if choice == 'Summarize':
       st.write("Dataframe of List Fiction Book")
       st.dataframe(Df)
       st.button("Summarize file")
+      st.write("Shape")
+      st.write(Df.shape)
+      st.write("Info")
+      buffer = io.StringIO()
+      Df.info(buf=buffer)
+      s = buffer.getvalue()
+      st.text(s)
       if st.button("Summarize file"):
-         st.write("Shape")
-         st.write(Df.shape)
-         st.write("Info")
-         buffer = io.StringIO()
-         Df.info(buf=buffer)
-         s = buffer.getvalue()
-         st.text(s)
          st.info("Results")
          st.info("Tokens")
          st.info("Words:")
-   """
-   col1,col2 = st.columns(2)
-   if summarize:
-      st.write(raw_text)
-      st.button("Copy text")
-      st.write("Words:")
-      with col1:
-         st.info("Results")
-      with col2:
-         st.info("Tokens")
-   """
  
 if choice == 'Statistics':
    st.write("")
