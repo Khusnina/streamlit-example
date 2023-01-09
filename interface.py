@@ -1,6 +1,7 @@
 import streamlit as st  
 import pandas as pd
 import numpy as np
+import io
 import urllib.request
 import requests
 import urllib
@@ -23,8 +24,13 @@ if choice == 'Fiction Books':
    df = pd.read_csv(url,encoding="latin-1")
    st.write("List of Fiction Book")
    st.write(df.head(20))
+   st.write("Shape")
    st.write(df.shape)
-   st.write(df.info())
+   st.write("Info")
+   buffer = io.StringIO()
+   df.info(buf=buffer)
+   s = buffer.getvalue()
+   st.text(s)
   
    clean = st.radio("Cleaning the data",('Select', 'Clean', 'Do not clean')) 
    if clean == 'Select':
