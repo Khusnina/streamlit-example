@@ -4,6 +4,4 @@ streamlit
 nltk
 unidecode
 spacy
-pyperclip
-Image
 re
