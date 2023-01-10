@@ -199,7 +199,7 @@ if choice == '📚 Fiction Books':
 "you'll've": "you will have",
 "you're": "you are",
 "you've": "you have"
-"""
+""")
    if clean == 'No Process':
       st.info('You do not want to process the list.', icon="ℹ️")
    option = st.selectbox('Select Category', category)
