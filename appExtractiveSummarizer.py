@@ -346,6 +346,24 @@ if choice == 'Summarize':
          st.success('Convert to lower case', icon="✅")
          Df['Description'] = Df['Description'].str.lower()
          st.write(Df['Description'])
+         
+         def clean_sentences(Df):
+            reviews = []
+            for sent in tqdm(Df['Description']):       
+               #remove non-alphabetic characters
+               review_text = re.sub("[^a-zA-Z0-9:$-,%.?!]+"," ", sent)
+               #tokenize the sentences
+               words = word_tokenize(review_text.lower())
+            words =' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
+            #lemmatize each word to its lemma
+            lemmatizer = WordNetLemmatizer()
+            lemma_words = [lemmatizer.lemmatize(i) for i in words]
+            reviews.append(lemma_words)
+            return(reviews)
+
+         st.success('Clean sentences', icon="✅")
+         Df['Description'] = clean_sentences(Df)
+         st.write(Df['Description'])
          st.write(Df)
          
          st.info("Tokens")
