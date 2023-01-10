@@ -77,7 +77,7 @@ if choice == 'Fiction Books':
          st.write("List of stop words:\n", stop_words[:100])
       contraction = st.checkbox('Contraction Map')
       if contraction:
-         st.write("""
+         contraction_mapping = {
             "ain't": "is not",
 "aren't": "are not",
 "can't": "cannot",
@@ -194,8 +194,8 @@ if choice == 'Fiction Books':
 "you'll": "you will",
 "you'll've": "you will have",
 "you're": "you are",
-"you've": "you have"
-""")  
+"you've": "you have"}
+         st.write(contraction_mapping)
          
    if clean == 'No Process':
       st.info('You do not want to process the list.', icon="ℹ️")
@@ -360,7 +360,8 @@ if choice == 'Summarize':
             lemma_words = [lemmatizer.lemmatize(i) for i in words]
             reviews.append(lemma_words)
             return(reviews)
-
+         st.success('Contraction Mapping', icon="✅")
+         st.write(contraction_mapping)
          st.success('Clean sentences', icon="✅")
          Df['Description'] = clean_sentences(Df)
          st.write(Df['Description'])
