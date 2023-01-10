@@ -11,10 +11,6 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize 
 from nltk.stem import WordNetLemmatizer 
-from autocorrect import Speller 
-from bs4 import BeautifulSoup 
-from nltk import word_tokenize
-from tqdm import tqdm
 from PIL import image
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
