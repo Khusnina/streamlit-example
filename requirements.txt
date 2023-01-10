@@ -1,6 +1,11 @@
-altair
-pandas
+altair==4.2.0
 streamlit
+spacy==3.4.3
+spacy-legacy==3.0.10
+spacy-loggers==1.0.3
+srsly==2.4.5
+stack-data==0.3.0
+streamlit==1.14.0
 io
 re 
 string
