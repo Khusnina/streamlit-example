@@ -331,7 +331,7 @@ if choice == 'Summarize':
          Df['Description'] = Df['Description'].replace('? ', '. ')
          Df['Description'] = Df['Description'].replace('*', '')
          Df['Description'] = Df['Description'].replace('\r', '')
-         Df['Description'] = Df['Description'].replace('Page|, '')
+         Df['Description'] = Df['Description'].replace('Page|', '')
          
          stop = stopwords.words('english')
          Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
