@@ -327,14 +327,23 @@ if choice == 'Summarize':
             Df['Description'] = Df['Description'].str.replace('    ', ' ')
             Formatted_text = Df['Description'].str.replace('   ', ' ')
             return Formatted_text
-
-         st.write("\nremove_newlines_tabs")
          Df['Description'] = remove_newlines_tabs(Df)
-         st.write(Df['Description'])
+         Df['Description'] = Df['Description'].replace('? ', '. ')
+         Df['Description'] = Df['Description'].replace('*', '')
+         Df['Description'] = Df['Description'].replace('\r', '')
+         Df['Description'] = Df['Description'].replace('Page|, '')
          
+         stop = stopwords.words('english')
+         Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
          st.info("Stopwords")
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:100])
+         
+         print("\nConvert text to lower case")
+         Df['Description'] = Df['Description'].str.lower()
+         print(Df['Description'])
+         st.write(Df)
+         
          st.info("Tokens")
          st.info("Words:")
  
