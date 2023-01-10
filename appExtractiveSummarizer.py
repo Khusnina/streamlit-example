@@ -3,13 +3,12 @@ import pandas as pd
 import numpy as np
 import io
 import re
+import spacy 
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize 
-from nltk import word_tokenize
 from nltk.stem import WordNetLemmatizer
-import spacy 
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 from tqdm import tqdm
