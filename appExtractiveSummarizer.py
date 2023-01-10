@@ -354,12 +354,12 @@ if choice == '📝 Summarize':
                review_text = re.sub("[^a-zA-Z0-9:$-,%.?!]+"," ", sent)
                #tokenize the sentences
                words = word_tokenize(review_text.lower())
-            words =' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
-            #lemmatize each word to its lemma
-            lemmatizer = WordNetLemmatizer()
-            lemma_words = [lemmatizer.lemmatize(i) for i in words]
-            reviews.append(lemma_words)
-            return(reviews)
+               words =' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
+               #lemmatize each word to its lemma
+               lemmatizer = WordNetLemmatizer()
+               lemma_words = [lemmatizer.lemmatize(i) for i in words]
+               reviews.append(lemma_words)
+             return(reviews)
          st.success('Contraction Mapping', icon="✅")
          st.write(contraction_mapping)
          st.success('Clean sentences', icon="✅")
