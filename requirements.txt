@@ -7,3 +7,4 @@ spacy
 pyperclip
 Image
 tqdm
+re
