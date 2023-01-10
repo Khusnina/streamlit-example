@@ -20,7 +20,7 @@ choice = st.sidebar.selectbox("Select Activity", activities)
 if choice == 'Introduction':
    st.markdown("<h2 style='text-align: center; color: white;'>INTRODUCTION</h2>", unsafe_allow_html=True)
    image = Image.open('summarization.png')
-   col1, col2, col3 = st.columns(3)
+   col1, col2, col3 = st.columns([1,10,1])
    with col1:
       st.write("")
    with col2:
