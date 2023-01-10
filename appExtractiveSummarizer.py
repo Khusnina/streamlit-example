@@ -359,7 +359,7 @@ if choice == '📝 Summarize':
                lemmatizer = WordNetLemmatizer()
                lemma_words = [lemmatizer.lemmatize(i) for i in words]
                reviews.append(lemma_words)
-             return(reviews)
+            return(reviews)
          st.success('Contraction Mapping', icon="✅")
          st.write(contraction_mapping)
          st.success('Clean sentences', icon="✅")
