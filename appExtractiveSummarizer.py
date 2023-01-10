@@ -333,15 +333,19 @@ if choice == 'Summarize':
          Df['Description'] = Df['Description'].replace('\r', '')
          Df['Description'] = Df['Description'].replace('Page|', '')
          
+         st.success('Replacing occurrences of \n,\\n,\t,\\ with a space.', icon="✅")
+         st.write(Df['Description'])
          stop = stopwords.words('english')
          Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
-         st.info("Stopwords")
+         st.success('Stopwords', icon="✅")
+         st.write(Df['Description'])
+         st.write("List of stopwords:")
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:100])
          
-         print("\nConvert text to lower case")
+         st.success('Convert to lower case', icon="✅")
          Df['Description'] = Df['Description'].str.lower()
-         print(Df['Description'])
+         st.write(Df['Description'])
          st.write(Df)
          
          st.info("Tokens")
