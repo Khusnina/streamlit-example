@@ -2,14 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import io
-import re
-import spacy 
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize 
 from nltk.stem import WordNetLemmatizer
-from spacy.lang.en.stop_words import STOP_WORDS
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
@@ -72,8 +69,8 @@ if choice == '📚 Fiction Books':
                          mime = 'text/csv')
       stopwords = st.checkbox('Stopwords')
       if stopwords:
-         stop_words = list(STOP_WORDS)
-         st.write("List of stop words:\n", stop_words[:100])
+         stopwords = nltk.corpus.stopwords.words('english')
+         st.write(stopwords[:100])
       contraction = st.checkbox('Contraction Map')
       if contraction:
          st.write("""
