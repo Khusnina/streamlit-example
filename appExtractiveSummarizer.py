@@ -318,6 +318,20 @@ if choice == 'Summarize':
       st.text(s)
       if st.button('Summarize file'):
          st.info("Results")
+         def remove_newlines_tabs(Df):
+            # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
+            Df['Description'] = Df['Description'].str.replace('\n\n\n\n', ' ')
+            Df['Description'] = Df['Description'].str.replace('\n\n', ' ')
+            Df['Description'] = Df['Description'].str.replace('\n', ' ')
+            Df['Description'] = Df['Description'].str.replace('/', ' ')
+            Df['Description'] = Df['Description'].str.replace('    ', ' ')
+            Formatted_text = Df['Description'].str.replace('   ', ' ')
+         return Formatted_text
+
+         st.write("\nremove_newlines_tabs")
+         Df['Description'] = remove_newlines_tabs(Df)
+         st.write(Df['Description'])
+         
          st.info("Stopwords")
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:100])
