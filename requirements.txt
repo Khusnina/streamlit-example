@@ -5,6 +5,3 @@ nltk
 unidecode
 spacy
 re
-word_tokenize
-WordNetLemmatizer
-tqdm
