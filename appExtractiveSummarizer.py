@@ -315,7 +315,6 @@ if choice == 'Summarize':
       Df.info(buf=buffer)
       s = buffer.getvalue()
       st.text(s)
-      st.button("Summarize file")
       if st.button('Summarize file'):
          st.info("Results")
          st.info("Tokens")
@@ -323,9 +322,3 @@ if choice == 'Summarize':
  
 if choice == 'Statistics':
    st.write("")
-   st.header('st.button')
-
-   if st.button('Say hello'):
-      st.write('Why hello there')
-   else:
-      st.write('Goodbye')
