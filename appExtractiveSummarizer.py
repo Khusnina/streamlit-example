@@ -318,6 +318,9 @@ if choice == 'Summarize':
       st.text(s)
       if st.button('Summarize file'):
          st.info("Results")
+         st.info("Stopwords")
+         stopwords = nltk.corpus.stopwords.words('english')
+         st.write(stopwords[:100])
          st.info("Tokens")
          st.info("Words:")
  
