@@ -5,3 +5,5 @@ nltk
 unidecode
 spacy
 pyperclip
+Image
+PIL
