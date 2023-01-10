@@ -6,3 +6,4 @@ unidecode
 spacy
 pyperclip
 Image
+tqdm
