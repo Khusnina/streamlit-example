@@ -326,7 +326,7 @@ if choice == 'Summarize':
             Df['Description'] = Df['Description'].str.replace('/', ' ')
             Df['Description'] = Df['Description'].str.replace('    ', ' ')
             Formatted_text = Df['Description'].str.replace('   ', ' ')
-         return Formatted_text
+            return Formatted_text
 
          st.write("\nremove_newlines_tabs")
          Df['Description'] = remove_newlines_tabs(Df)
