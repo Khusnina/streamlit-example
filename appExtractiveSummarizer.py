@@ -2,14 +2,17 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import io
+import re
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize 
+from nltk import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import spacy 
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
+from tqdm import tqdm
 from PIL import Image
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
@@ -77,7 +80,7 @@ if choice == '📚 Fiction Books':
          st.write("List of stop words:\n", stop_words[:100])
       contraction = st.checkbox('Contraction Map')
       if contraction:
-         contraction_mapping = {
+         st.write("""
             "ain't": "is not",
 "aren't": "are not",
 "can't": "cannot",
@@ -194,9 +197,8 @@ if choice == '📚 Fiction Books':
 "you'll": "you will",
 "you'll've": "you will have",
 "you're": "you are",
-"you've": "you have"}
-         st.write(contraction_mapping)
-         
+"you've": "you have"
+"""
    if clean == 'No Process':
       st.info('You do not want to process the list.', icon="ℹ️")
    option = st.selectbox('Select Category', category)
