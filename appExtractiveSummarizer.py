@@ -9,8 +9,6 @@ import string
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords 
-from nltk.tokenize import word_tokenize 
-from nltk.stem import WordNetLemmatizer 
 from PIL import image
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
