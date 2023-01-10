@@ -2,6 +2,3 @@ altair
 pandas
 streamlit
 nltk
-unidecode
-spacy
-re
