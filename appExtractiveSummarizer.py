@@ -3,19 +3,31 @@ import pandas as pd
 import numpy as np
 import io
 import unidecode
+import unicodedata
 import re
 import time 
 import string
+import contractions
 import nltk
 nltk.download('stopwords')
+nltk.download('punkt')
 from nltk.corpus import stopwords 
-from PIL import image
+from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.stem import WordNetLemmatizer
+from PIL import Image
+from string import punctuation
+import spacy
+from spacy.lang.en.stop_words import STOP_WORDS
+from string import punctuation
+from nltk.cluster.util import cosine_distance
+import networkx as nx
+import neattext.functions as nfx
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
 st.markdown("<hr size='5' width='100%;'>", unsafe_allow_html=True)
 activities = ["💡 Introduction","📚 Fiction Books","📝 Summarize","📊 Statistic"]
-choice = st.sidebar.selectbox("Select Activity", activities)
+choice = st.sidebar.selectbox("💻 Select Activity", activities)
 
 if choice == '💡 Introduction':
    st.markdown("<h2 style='text-align: center; color: white;'>💡 INTRODUCTION 💡</h2>", unsafe_allow_html=True)
@@ -25,12 +37,12 @@ if choice == '💡 Introduction':
    with col1:
       st.write("")
    with col2:
-      st.image(image, caption='Text Summarization')
+      st.image(image, caption = 'Text Summarization')
    with col3:
       st.write("")
-   st.markdown("<p style='text-align: center; color: white;'>\nThe extractive text summarization system creates summaries by identifying, extracting the sentences, and subsequently combining the most important sentences in an online book to generate in form of a summary. The extraction summary method is the selection of sentences or phrases that have the highest score from the original text and organize them into a new, shorter text without changing the source text.</p>", unsafe_allow_html=True)
+   st.markdown("<p style='text-align: center; color: white;'>\nThe extractive text summarization system creates summary by identifying, extracting the sentences, and subsequently combining the most important sentences in an online book to generate in form of a summary. The extraction summary method is the selection of sentences or phrases that have the highest score from the original text and organize them into a new, shorter text without changing the source text.</p>", unsafe_allow_html=True)
    st.markdown("<p style='text-align: center; color: white;'>\nFor extractive text summarization, the main sentence and the object are extracted without modifying the object itself, the strategy of concatenating on extracting summary from a given corpus. The system will select the most important sentences in the online book then combine them to form a summary extractively through machine learning with Natural Language Processing (NLP). The Repetitive Neural Network (RNN) is the model that will be used to generate the summary. The extracted summaries were used to train the extractive Recurrent Neural Network (RNN) model that had been used for the classification task and it generated the latest results. Recurrent Neural Network (RNN) is the most common architectures for Neural Text Summarization. Recurrent Neural Network (RNN) have been used widely in text summarization problem. The approach is based on the idea of identifying a set of sentences which collectively give the highest ROUGE with respect to the gold summary.</p>", unsafe_allow_html=True)
-   
+    
 if choice == '📚 Fiction Books':
    st.markdown("<h2 style='text-align: center; color: white;'>📚 FICTIONS BOOKS 📚</h2>", unsafe_allow_html=True)
    category = ["Story","Harry Potter"]
@@ -76,125 +88,7 @@ if choice == '📚 Fiction Books':
          st.write(stopwords[:100])
       contraction = st.checkbox('Contraction Map')
       if contraction:
-         st.write("""
-            "ain't": "is not",
-"aren't": "are not",
-"can't": "cannot",
-"can't've": "cannot have",
-"'cause": "because",
-"could've": "could have",
-"couldn't": "could not",
-"couldn't've": "could not have",
-"didn't": "did not",
-"doesn't": "does not",
-"don't": "do not",
-"hadn't": "had not",
-"hadn't've": "had not have",
-"hasn't": "has not",
-"haven't": "have not",
-"he'd": "he would",
-"he'd've": "he would have",
-"he'll": "he will",
-"he'll've": "he he will have",
-"he's": "he is",
-"how'd": "how did",
-"how'd'y": "how do you",
-"how'll": "how will",
-"how's": "how is",
-"i'd": "i would",
-"i'd've": "i would have",
-"i'll": "i will",
-"i'll've": "i will have",
-"i'm": "i am",
-"i've": "i have",
-"isn't": "is not",
-"it'd": "it would",
-"it'd've": "it would have",
-"it'll": "it will",
-"it'll've": "it will have",
-"it's": "it is",
-"let's": "let us",
-"ma'am": "madam",
-"mayn't": "may not",
-"might've": "might have",
-"mightn't": "might not",
-"mightn't've": "might not have",
-"must've": "must have",
-"mustn't": "must not",
-"mustn't've": "must not have",
-"needn't": "need not",
-"needn't've": "need not have",
-"o'clock": "of the clock",
-"oughtn't": "ought not",
-"oughtn't've": "ought not have",
-"shan't": "shall not",
-"sha'n't": "shall not",
-"shan't've": "shall not have",
-"she'd": "she would",
-"she'd've": "she would have",
-"she'll": "she will",
-"she'll've": "she will have",
-"she's": "she is",
-"should've": "should have",
-"shouldn't": "should not",
-"shouldn't've": "should not have",
-"so've": "so have",
-"so's": "so as",
-"that'd": "that would",
-"that'd've": "that would have",
-"that's": "that is",
-"there'd": "there would",
-"there'd've": "there would have",
-"there's": "there is",
-"they'd": "they would",
-"they'd've": "they would have",
-"they'll": "they will",
-"they'll've": "they will have",
-"they're": "they are",
-"they've": "they have",
-"to've": "to have",
-"wasn't": "was not",
-"we'd": "we would",
-"we'd've": "we would have",
-"we'll": "we will",
-"we'll've": "we will have",
-"we're": "we are",
-"we've": "we have",
-"weren't": "were not",
-"what'll": "what will",
-"what'll've": "what will have",
-"what're": "what are",
-"what's": "what is",
-"what've": "what have",
-"when's": "when is",
-"when've": "when have",
-"where'd": "where did",
-"where's": "where is",
-"where've": "where have",
-"who'll": "who will",
-"who'll've": "who will have",
-"who's": "who is",
-"who've": "who have",
-"why's": "why is",
-"why've": "why have",
-"will've": "will have",
-"won't": "will not",
-"won't've": "will not have",
-"would've": "would have",
-"wouldn't": "would not",
-"wouldn't've": "would not have",
-"y'all": "you all",
-"y'all'd": "you all would",
-"y'all'd've": "you all would have",
-"y'all're": "you all are",
-"y'all've": "you all have",
-"you'd": "you would",
-"you'd've": "you would have",
-"you'll": "you will",
-"you'll've": "you will have",
-"you're": "you are",
-"you've": "you have"
-""")
+         st.write("")
    if clean == 'No Process':
       st.info('You do not want to process the list.', icon="ℹ️")
    option = st.selectbox('Select Category', category)
@@ -293,19 +187,122 @@ if choice == '📚 Fiction Books':
          st.write(df['Description'][14])
          content15 = df['Description'][14]
          st.download_button('Download', content15)
-   
+
 if choice == '📝 Summarize':
    st.markdown("<h2 style='text-align: center; color: white;'>📝 EXTRACTIVE TEXT SUMMARIZER 📝</h2>", unsafe_allow_html=True)
    with st.form(key = 'nlpForm'):
-      raw_text = st.text_area("Original Content","Enter text here")
+      text = st.text_area("Original Content","Enter text here")
       submitted = st.form_submit_button("Summarize")
+      if submitted:
+         st.info("Result")
+         st.write(text)
+         stopwords = list(STOP_WORDS)
+         stopwords
+         nlp = spacy.load('en_core_web_sm')
+         doc = nlp(text)
+         tokens = [token.text for token in doc]
+         st.write(doc)
+         punctuation+='/n'
+         punctuation
+         word_freq={}
+         for word in doc:
+            if word.text.lower() not in stopwords:
+               if word.text.lower() not in punctuation:
+                  if word.text not in word_freq.keys():
+                     word_freq[word.text]=1
+                  else:
+                     word_freq[word.text]+=1
+            st.write(word_freq)
+     
+      
+   uploaded_txt = st.file_uploader("Choose a file",type=["txt"])
+   if uploaded_txt is not None:
+      st.write(type(uploaded_txt))
+      file_details_txt = {"filename":uploaded_txt.name,"filetype":uploaded_txt.type,"filesize":uploaded_txt.size}
+      st.write(file_details_txt)
+      if uploaded_txt.type =="text/plain":
+         Dftxt = uploaded_txt.read()
+         raw_text = str(Dftxt,"utf-8")
+         st.write(raw_text)
+      if st.button('Summarize file'):
+         stopwords_txt = st.checkbox('Stopwords')
+         if stopwords_txt:
+            st.success('Stopwords', icon="✅")
+            stopWords = list(stopwords.words("english"))+list(punctuation)+list([0,1,2,3,4,5,6,7,8,9])
+            stopWords[15:25]
+         
+         wordToken_txt = st.checkbox('Word Tokenize')
+         if wordToken_txt:
+            st.success('Word Tokenize', icon="✅")
+            words = word_tokenize(raw_text)
+            wordToken_txt = st.checkbox('Word Tokenize')
+            words[15:25]
+         
+         freqTable_txt = st.checkbox('Frequent Table')
+         if freqTable_txt:
+            st.success('Frequent Table', icon="✅")
+            freqTable={}
+            for word in words: 
+               word = word.lower() 
+               if word not in stopWords:
+                  if word in freqTable: 
+                     freqTable[word] += 1
+                  else: 
+                     freqTable[word] = 1
+            st.write(freqTable)
+            st.write("Items")
+            st.write(freqTable.items())
+            st.write(sorted(freqTable.items(), key = lambda x: x[1]))
+         
+         sentToken_txt = st.checkbox('Sent Tokenize')
+         if sentToken_txt:
+            st.success('Sent Tokenize', icon="✅")
+            sentences = sent_tokenize(raw_text) 
+            for sen in sentences:
+               st.write(sen,"\n")
+                  
+         # Creating a dictionary to keep the score of each sentence 
+         sentWeight_txt = st.checkbox('Sent Tokenize')
+         if sentWeight_txt:
+            st.success('Sentence Weight', icon="✅")
+            sentence_weight = dict() 
+            for sentence in sentences: 
+               # print(sentence,'\n')
+               for word, freq in freqTable.items():
+                  # print('\n' , word, freq)
+                  if word in sentence.lower(): 
+                  # print('sentence_weight    ',sentence_weight)
+                     if sentence in sentence_weight:     
+                        sentence_weight[sentence] += freq 
+                     else: 
+                        sentence_weight[sentence] = freq 
+               #sentence_weight
+               sumValues = 0
+               for sentence in sentence_weight: 
+                  sumValues += sentence_weight[sentence] 
+               #sumValues 
+               # Average value of a sentence from the original text 
+               average = int(sumValues / len(sentence_weight)) 
+               st.write(average,sumValues,len(sentence_weight),sep='\n\n')
+               #average
+               # Storing sentences into our summary. 
+               summary = '' 
+               counter=0
+               for sentence in sentences: 
+                  if (sentence in sentence_weight) and (sentence_weight[sentence] > (1.25* average)): 
+                     summary += " " + sentence 
+                     counter+=1
+               st.write(counter,summary,sep='\n\n')
+     
+         
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
    if uploaded_file is not None:
+      st.write("ORIGINAL CONTENT")
       st.write(type(uploaded_file))
       file_details = {"filename":uploaded_file.name,"filetype":uploaded_file.type,"filesize":uploaded_file.size}
       st.write(file_details)
       Df = pd.read_csv(uploaded_file)
-      st.write("Dataframe of List Fiction Book")
+      st.write("List Fiction Book")
       st.dataframe(Df)
       st.write("Shape")
       st.write(Df.shape)
@@ -314,6 +311,7 @@ if choice == '📝 Summarize':
       Df.info(buf=buffer)
       s = buffer.getvalue()
       st.text(s)
+      
       if st.button('Summarize file'):
          st.info("Results")
          def remove_newlines_tabs(Df):
@@ -345,28 +343,7 @@ if choice == '📝 Summarize':
          Df['Description'] = Df['Description'].str.lower()
          st.write(Df['Description'])
          
-         def clean_sentences(Df):
-            reviews = []
-            for sent in tqdm(Df['Description']):       
-               #remove non-alphabetic characters
-               review_text = re.sub("[^a-zA-Z0-9:$-,%.?!]+"," ", sent)
-               #tokenize the sentences
-               words = word_tokenize(review_text.lower())
-               words =' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
-               #lemmatize each word to its lemma
-               lemmatizer = WordNetLemmatizer()
-               lemma_words = [lemmatizer.lemmatize(i) for i in words]
-               reviews.append(lemma_words)
-            return(reviews)
-         st.success('Contraction Mapping', icon="✅")
-         st.write(contraction_mapping)
-         st.success('Clean sentences', icon="✅")
-         Df['Description'] = clean_sentences(Df)
-         st.write(Df['Description'])
-         st.write(Df)
-         
-         st.info("Tokens")
-         st.info("Words:")
  
-if choice == '📊 Statistics':
-   st.write("")
+if choice == '📊 Result':
+   st.info("Result (TXT file)")
+   st.info("Result (CSV file)")
