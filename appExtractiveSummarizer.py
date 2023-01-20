@@ -258,7 +258,7 @@ if choice == '📝 Summarize':
             # print(sentence,'\n')
             for word, freq in freqTable.items():
             # print('\n' , word, freq)
-               if word in sentence.str.lower(): 
+               if word in sentence.lower(): 
                   # print('sentence_weight    ',sentence_weight)
                   if sentence in sentence_weight:     
                      sentence_weight[sentence] += freq 
