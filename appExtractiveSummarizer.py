@@ -223,7 +223,7 @@ if choice == '📝 Summarize':
       if uploaded_txt.type =="text/plain":
          Dftxt = uploaded_txt.read()
          raw_text = str(Dftxt,"utf-8")
-         st.write(raw_text)
+         st.text(raw_text)
       if st.button('Summarize file'):
          st.success('Stopwords', icon="✅")
          stopWords = list(stopwords.words("english"))+list(punctuation)+list([0,1,2,3,4,5,6,7,8,9])
