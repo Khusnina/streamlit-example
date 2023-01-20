@@ -235,7 +235,8 @@ if choice == '📝 Summarize':
             st.success('Word Tokenize', icon="✅")
             words = word_tokenize(raw_text)
             wordToken_txt = st.checkbox('Word Tokenize')
-            words[15:25]
+            stp = words[15:25]
+            st.write(stp)
          
          freqTable_txt = st.checkbox('Table of Frequent')
          if freqTable_txt:
