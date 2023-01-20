@@ -225,8 +225,7 @@ if choice == '📝 Summarize':
          raw_text = str(Dftxt,"utf-8")
          st.write(raw_text)
       if st.button('Summarize file'):
-         stopwords_txt = st.checkbox('List of stopwords')
-         if stopwords_txt:
+         if st.checkbox('List of stopwords'):
             st.success('Stopwords', icon="✅")
             stopWords = list(stopwords.words("english"))+list(punctuation)+list([0,1,2,3,4,5,6,7,8,9])
             stopWords[15:25]
