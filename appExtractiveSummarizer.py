@@ -225,20 +225,20 @@ if choice == '📝 Summarize':
          raw_text = str(Dftxt,"utf-8")
          st.write(raw_text)
       if st.button('Summarize file'):
-         stopwords_txt = st.checkbox('Stopwords')
+         stopwords_txt = st.checkbox('List of stopwords')
          if stopwords_txt:
             st.success('Stopwords', icon="✅")
             stopWords = list(stopwords.words("english"))+list(punctuation)+list([0,1,2,3,4,5,6,7,8,9])
             stopWords[15:25]
          
-         wordToken_txt = st.checkbox('Word Tokenize')
+         wordToken_txt = st.checkbox('Tokenizing Words')
          if wordToken_txt:
             st.success('Word Tokenize', icon="✅")
             words = word_tokenize(raw_text)
             wordToken_txt = st.checkbox('Word Tokenize')
             words[15:25]
          
-         freqTable_txt = st.checkbox('Frequent Table')
+         freqTable_txt = st.checkbox('Table of Frequent')
          if freqTable_txt:
             st.success('Frequent Table', icon="✅")
             freqTable={}
@@ -254,7 +254,7 @@ if choice == '📝 Summarize':
             st.write(freqTable.items())
             st.write(sorted(freqTable.items(), key = lambda x: x[1]))
          
-         sentToken_txt = st.checkbox('Sent Tokenize')
+         sentToken_txt = st.checkbox('Tokenizing Sent')
          if sentToken_txt:
             st.success('Sent Tokenize', icon="✅")
             sentences = sent_tokenize(raw_text) 
@@ -262,7 +262,7 @@ if choice == '📝 Summarize':
                st.write(sen,"\n")
                   
          # Creating a dictionary to keep the score of each sentence 
-         sentWeight_txt = st.checkbox('Sent Tokenize')
+         sentWeight_txt = st.checkbox('Weight of Sentences')
          if sentWeight_txt:
             st.success('Sentence Weight', icon="✅")
             sentence_weight = dict() 
