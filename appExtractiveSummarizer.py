@@ -225,58 +225,47 @@ if choice == '📝 Summarize':
          raw_text = str(Dftxt,"utf-8")
          st.write(raw_text)
       if st.button('Summarize file'):
-         if st.checkbox('List of stopwords'):
-            st.success('Stopwords', icon="✅")
-            stopWords = list(stopwords.words("english"))+list(punctuation)+list([0,1,2,3,4,5,6,7,8,9])
-            stopWords[15:25]
+         st.checkbox('List of stopwords'):
+         st.success('Stopwords', icon="✅")
+         stopWords = list(stopwords.words("english"))+list(punctuation)+list([0,1,2,3,4,5,6,7,8,9])
+         stopWords[15:25]
          
-         wordToken_txt = st.checkbox('Tokenizing Words')
-         if wordToken_txt:
-            st.success('Word Tokenize', icon="✅")
-            words = word_tokenize(raw_text)
-            wordToken_txt = st.checkbox('Word Tokenize')
-            stp = words[15:25]
-            st.write(stp)
+         st.success('Word Tokenize', icon="✅")
+         words = word_tokenize(raw_text)
+         words[15:25]
          
-         freqTable_txt = st.checkbox('Table of Frequent')
-         if freqTable_txt:
-            st.success('Frequent Table', icon="✅")
-            freqTable={}
-            for word in words: 
-               word = word.lower() 
-               if word not in stopWords:
-                  if word in freqTable: 
-                     freqTable[word] += 1
-                  else: 
-                     freqTable[word] = 1
-            st.write(freqTable)
-            st.write("Items")
-            st.write(freqTable.items())
-            st.write(sorted(freqTable.items(), key = lambda x: x[1]))
+         st.success('Frequent Table', icon="✅")
+         freqTable={}
+         for word in words: 
+            word = word.lower() 
+            if word not in stopWords:
+               if word in freqTable: 
+                  freqTable[word] += 1
+               else: 
+                  freqTable[word] = 1
+         st.write(freqTable)
+         st.write("Items")
+         st.write(freqTable.items())
+         st.write(sorted(freqTable.items(), key = lambda x: x[1]))
          
-         sentToken_txt = st.checkbox('Tokenizing Sent')
-         if sentToken_txt:
-            st.success('Sent Tokenize', icon="✅")
-            sentences = sent_tokenize(raw_text) 
-            for sen in sentences:
-               st.write(sen,"\n")
+         st.success('Sent Tokenize', icon="✅")
+         sentences = sent_tokenize(raw_text) 
+         for sen in sentences:
+            st.write(sen,"\n")
                   
-         # Creating a dictionary to keep the score of each sentence 
-         sentWeight_txt = st.checkbox('Weight of Sentences')
-         if sentWeight_txt:
-            st.success('Sentence Weight', icon="✅")
-            sentence_weight = dict() 
-            for sentence in sentences: 
-               # print(sentence,'\n')
-               for word, freq in freqTable.items():
-                  # print('\n' , word, freq)
-                  if word in sentence.lower(): 
+         st.success('Sentence Weight', icon="✅")
+         sentence_weight = dict() 
+         for sentence in sentences: 
+            # print(sentence,'\n')
+            for word, freq in freqTable.items():
+            # print('\n' , word, freq)
+               if word in sentence.str.lower(): 
                   # print('sentence_weight    ',sentence_weight)
-                     if sentence in sentence_weight:     
-                        sentence_weight[sentence] += freq 
-                     else: 
-                        sentence_weight[sentence] = freq 
-               #sentence_weight
+                  if sentence in sentence_weight:     
+                     sentence_weight[sentence] += freq 
+                  else: 
+                     sentence_weight[sentence] = freq 
+                  #sentence_weight
                sumValues = 0
                for sentence in sentence_weight: 
                   sumValues += sentence_weight[sentence] 
