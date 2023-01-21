@@ -336,7 +336,7 @@ if choice == '📝 Summarize':
          for i in range(len(Df)):
             sToken = nltk.word_tokenize(Df['Description'][i])
             st.write(i+1, "Description")
-            st.write(sToken1)
+            st.write(sToken)
  
 if choice == '📊 Result':
    st.info("Result (TXT file)")
