@@ -318,7 +318,8 @@ if choice == '📝 Summarize':
          Df['Description'] = Df['Description'].replace('Page|', '')
          
          st.success('Replacing occurrences of tabs, line, special characters with a space.', icon="✅")
-         st.write(Df['Description'])
+         if st.checkbox('Replacing occurrences of tabs, line, special characters with a space.'):
+            st.write(Df['Description'])
          stop = stopwords.words('english')
          Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
          st.success('Stopwords', icon="✅")
@@ -332,8 +333,10 @@ if choice == '📝 Summarize':
          st.write(Df['Description'])
          
          st.success('Sent Tokenize', icon="✅")
-         b = nltk.word_tokenize(Df['Description'][0])
-         st.write(b)
+         for i in range(len(Df)):
+            sToken = nltk.word_tokenize(Df['Description'][i])
+            st.write(i+1, "Description")
+            st.write(sToken1)
  
 if choice == '📊 Result':
    st.info("Result (TXT file)")
