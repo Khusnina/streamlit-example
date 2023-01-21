@@ -347,7 +347,7 @@ if choice == '📝 Summarize':
          nltk.word_tokenize(Df['Description'][12])
          nltk.word_tokenize(Df['Description'][13])
          nltk.word_tokenize(Df['Description'][14])
-         st.write(Df['Description'])
+         st.write(Df['Description'][0])
  
 if choice == '📊 Result':
    st.info("Result (TXT file)")
