@@ -325,14 +325,14 @@ if choice == '📝 Summarize':
          st.write(Df['Description'])
          st.write("List of stopwords:")
          stopwords = nltk.corpus.stopwords.words('english')
-         st.write(stopwords[:100])
+         st.write(stopwords[:10])
          
          st.success('Convert to lower case', icon="✅")
          Df['Description'] = Df['Description'].str.lower()
          st.write(Df['Description'])
          
          st.success('Sent Tokenize', icon="✅")
-         nltk.word_tokenize(Df["Description"][0])
+         nltk.sent_tokenize(Df['Description'][0])
          nltk.word_tokenize(Df['Description'][1])
          nltk.word_tokenize(Df['Description'][2])
          nltk.word_tokenize(Df['Description'][3])
@@ -347,7 +347,7 @@ if choice == '📝 Summarize':
          nltk.word_tokenize(Df['Description'][12])
          nltk.word_tokenize(Df['Description'][13])
          nltk.word_tokenize(Df['Description'][14])
-         st.write(Df['Description'])
+         st.write(Df['Description'][0])
  
 if choice == '📊 Result':
    st.info("Result (TXT file)")
