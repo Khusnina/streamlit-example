@@ -329,14 +329,15 @@ if choice == '📝 Summarize':
          stop = stopwords.words('english')
          Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
          st.success('Stopwords', icon="✅")
-         st.write(sToken)
          st.write("List of stopwords:")
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:10])
          
          st.success('Convert to lower case', icon="✅")
-         Df['Description'] = Df['Description'].str.lower()
-         st.write(sToken)
+         for i in range(len(Df)):
+            sToken = sToken.str.lower()
+            st.write(i+1, "Description") 
+            st.write(sToken)
          
  
 if choice == '📊 Result':
