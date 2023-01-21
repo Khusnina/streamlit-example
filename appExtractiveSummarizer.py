@@ -332,7 +332,7 @@ if choice == '📝 Summarize':
          st.write(Df['Description'])
          
          st.success('Sent Tokenize', icon="✅")
-         nltk.word_tokenize(Df['Description'][0])
+         nltk.word_tokenize(Df["Description"][0])
          nltk.word_tokenize(Df['Description'][1])
          nltk.word_tokenize(Df['Description'][2])
          nltk.word_tokenize(Df['Description'][3])
@@ -347,7 +347,7 @@ if choice == '📝 Summarize':
          nltk.word_tokenize(Df['Description'][12])
          nltk.word_tokenize(Df['Description'][13])
          nltk.word_tokenize(Df['Description'][14])
-         st.write(Df['Description'][0])
+         st.write(Df['Description'])
  
 if choice == '📊 Result':
    st.info("Result (TXT file)")
