@@ -320,23 +320,25 @@ if choice == '📝 Summarize':
          st.success('Replacing occurrences of tabs, line, special characters with a space.', icon="✅")
          if st.checkbox('Replacing occurrences of tabs, line, special characters with a space.'):
             st.write(Df['Description'])
+            
+         st.success('Word Tokenize', icon="✅")
+         for i in range(len(Df)):
+            sToken = nltk.word_tokenize(Df['Description'][i])
+            st.write(i+1, "Description")
+            st.write(sToken)
+            
          stop = stopwords.words('english')
          Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
          st.success('Stopwords', icon="✅")
-         st.write(Df['Description'])
+         st.write(sToken)
          st.write("List of stopwords:")
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:10])
          
          st.success('Convert to lower case', icon="✅")
          Df['Description'] = Df['Description'].str.lower()
-         st.write(Df['Description'])
+         st.write(sToken)
          
-         st.success('Sent Tokenize', icon="✅")
-         for i in range(len(Df)):
-            sToken = nltk.word_tokenize(Df['Description'][i])
-            st.write(i+1, "Description")
-            st.write(sToken)
  
 if choice == '📊 Result':
    st.info("Result (TXT file)")
