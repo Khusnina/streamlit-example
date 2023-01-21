@@ -318,8 +318,7 @@ if choice == '📝 Summarize':
          Df['Description'] = Df['Description'].replace('Page|', '')
          
          st.success('Replacing occurrences of tabs, line, special characters with a space.', icon="✅")
-         if st.checkbox('Replacing occurrences of tabs, line, special characters with a space.'):
-            st.write(Df['Description'])
+         st.write(Df['Description'])
             
          st.success('Word Tokenize', icon="✅")
          for i in range(len(Df)):
