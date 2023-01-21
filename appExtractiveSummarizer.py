@@ -331,6 +331,10 @@ if choice == '📝 Summarize':
          Df['Description'] = Df['Description'].str.lower()
          st.write(Df['Description'])
          
+         st.success('Sent Tokenize', icon="✅")
+         sentences = sent_tokenize(Df['Description']) 
+         for sen in sentences:
+            st.write(sen,"\n")
  
 if choice == '📊 Result':
    st.info("Result (TXT file)")
