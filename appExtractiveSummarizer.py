@@ -315,8 +315,6 @@ if choice == '📝 Summarize':
       
       if st.button('Summarize file'):
          st.info("Results")
-         Df=Df.lower()
-         st.dataframe(Df)
          contraction_mapping = {"ain't": "is not", "aren't": "are not","can't": "cannot", "'cause": "because", "could've": "could have", "couldn't": "could not",
 
                            "didn't": "did not", "doesn't": "does not", "don't": "do not", "hadn't": "had not", "hasn't": "has not", "haven't": "have not",
@@ -364,13 +362,17 @@ if choice == '📝 Summarize':
                            "you're": "you are", "you've": "you have"}
          
          def clean_text(Df):
-            text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
-            text=re.sub(r'\(.*\)',"",text)
-            text=re.sub("'s","",text)
-            text=re.sub('"','',text)
-            text=' '.join([i for i in text.split() if i.isalpha()])
-            text=re.sub('[^a-zA-Z]'," ",text)
-            return text
+            Descrition=Description.lower()
+            Descrition=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in Descrition.split()])
+            Descrition=re.sub(r'\(.*\)',"",Descrition)
+            Descrition=re.sub("'s","",Descrition)
+            Descrition=re.sub('"','',Descrition)
+            Descrition=' '.join([i for i in Descrition.split() if i.isalpha()])
+            Descrition=re.sub('[^a-zA-Z]'," ",Descrition)
+            return Descrition
+         
+         Df['Description']=Df['Description'].apply(clean_text)
+         st.dataframe(Df)
          """
          def remove_newlines_tabs(Df):
             # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
