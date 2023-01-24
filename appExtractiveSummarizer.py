@@ -363,15 +363,14 @@ if choice == '📝 Summarize':
 
                            "you're": "you are", "you've": "you have"}
          
-            def clean_text(Df):
-               Df=Df.lower()
-               text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
-               text=re.sub(r'\(.*\)',"",text)
-               text=re.sub("'s","",text)
-               text=re.sub('"','',text)
-               text=' '.join([i for i in text.split() if i.isalpha()])
-               text=re.sub('[^a-zA-Z]'," ",text)
-               return text
+         def clean_text(Df):
+            text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
+            text=re.sub(r'\(.*\)',"",text)
+            text=re.sub("'s","",text)
+            text=re.sub('"','',text)
+            text=' '.join([i for i in text.split() if i.isalpha()])
+            text=re.sub('[^a-zA-Z]'," ",text)
+            return text
          """
          def remove_newlines_tabs(Df):
             # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
