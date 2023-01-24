@@ -361,15 +361,15 @@ if choice == '📝 Summarize':
 
                            "you're": "you are", "you've": "you have"}
          
-         def clean_text(Df):
-            Descrition=Description.lower()
-            Descrition=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in Descrition.split()])
-            Descrition=re.sub(r'\(.*\)',"",Descrition)
-            Descrition=re.sub("'s","",Descrition)
-            Descrition=re.sub('"','',Descrition)
-            Descrition=' '.join([i for i in Descrition.split() if i.isalpha()])
-            Descrition=re.sub('[^a-zA-Z]'," ",Descrition)
-            return Descrition
+         def clean_text(text):
+            text=text.lower()
+            text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
+            text=re.sub(r'\(.*\)',"",text)
+            text=re.sub("'s","",text)
+            text=re.sub('"','',text)
+            text=' '.join([i for i in text.split() if i.isalpha()])
+            text=re.sub('[^a-zA-Z]'," ",text)
+            return text
          
          Df['Description']=Df['Description'].apply(clean_text)
          st.dataframe(Df)
