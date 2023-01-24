@@ -424,9 +424,9 @@ if choice == '📝 Summarize':
             new_vec  = np.zeros(n)
             for txt in summary.split():
                if txt in text:
-               for i,word in enumerate(text.split()):
-                  if word == txt:
-                    new_vec[i] = 1
+                  for i,word in enumerate(text.split()):
+                     if word == txt:
+                        new_vec[i] = 1
             return new_vec
 
          def get_summary(text,new_vec,thresh = 0.5):
