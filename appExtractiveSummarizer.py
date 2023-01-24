@@ -419,7 +419,25 @@ if choice == '📝 Summarize':
          Df['Title'] = Df['Title'].apply(lambda x:preprocess(x))
          Df['Description'] = Df['Description'].apply(lambda x:preprocess(x))
          st.write(Df['Title'][1],Df['Description'][1])
+         
+         def get_out_vector(text,summary,n=40):
+            new_vec  = np.zeros(n)
+            for txt in summary.split():
+               if txt in text:
+               for i,word in enumerate(text.split()):
+                  if word == txt:
+                    new_vec[i] = 1
+            return new_vec
+
+         def get_summary(text,new_vec,thresh = 0.5):
+            summary = []
+            for i,word in enumerate(text.split()):
+               if new_vec[i] >= thresh:
+                  summary.append(word)
+            return " ".join(summary)
  
+         vec = (get_out_vector(Df['Title'],Df['Description'],15))
+         st.write(get_summary(Df['Title'],vec))
 if choice == '📊 Result':
    st.info("Result (TXT file)")
    st.info("Result (CSV file)")
