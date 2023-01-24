@@ -400,12 +400,6 @@ if choice == '📝 Summarize':
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:10])
          
-         st.success('Convert to lower case', icon="✅")
-         for i in range(len(Df)):
-            sToken = sToken.str.lower()
-            st.write(i+1, "Description") 
-            st.write(sToken)
-         
          st.success('Word Tokenize', icon="✅")
          for i in range(len(Df)):
             sToken = nltk.word_tokenize(Df['Description'][i])
