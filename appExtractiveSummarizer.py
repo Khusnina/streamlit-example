@@ -243,9 +243,9 @@ if choice == '📝 Summarize':
                else: 
                   freqTable[word] = 1
          st.write(freqTable)
-         st.write("Items")
-         st.write(freqTable.items())
-         st.write(sorted(freqTable.items(), key = lambda x: x[1]))
+         #st.write("Items")
+         #st.write(freqTable.items())
+         #st.write(sorted(freqTable.items(), key = lambda x: x[1]))
          
          st.success('Sent Tokenize', icon="✅")
          sentences = sent_tokenize(raw_text) 
