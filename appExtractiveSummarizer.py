@@ -271,7 +271,7 @@ if choice == '📝 Summarize':
                #sumValues 
                # Average value of a sentence from the original text 
                average = int(sumValues / len(sentence_weight)) 
-               st.write(average,sumValues,len(sentence_weight),sep='\n\n')
+               #st.write(average,sumValues,len(sentence_weight),sep='\n\n')
                #average
                # Storing sentences into our summary. 
                summary = '' 
