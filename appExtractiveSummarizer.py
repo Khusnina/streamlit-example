@@ -411,11 +411,14 @@ if choice == '📝 Summarize':
          Df['Description']=Df['Description'].apply(preprocess)
          st.dataframe(Df)
          
-         st.success('Summary', icon="✅")
+         st.success('Summary 1', icon="✅")
          Df['Title'] = Df['Title'].apply(lambda x:preprocess(x))
          Df['Description'] = Df['Description'].apply(lambda x:preprocess(x))
-         #st.write(Df['Title'][0],Df['Description'][0])
-         st.write(Df)
+         st.write(Df['Title'][0],Df['Description'][0])
+         st.success('Summary 2', icon="✅")
+         Df['Title'] = Df['Title'].apply(lambda x:preprocess(x))
+         Df['Description'] = Df['Description'].apply(lambda x:preprocess(x))
+         st.write(Df['Title'][1],Df['Description'][1])
  
 if choice == '📊 Result':
    st.info("Result (TXT file)")
