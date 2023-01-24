@@ -148,7 +148,7 @@ if choice == '📚 Fiction Books':
       book9 = st.checkbox('[1]Harry Potter - The Boy Who Lived')
       if book9:
          st.write(df['Title'][8])
-         st.write(df['Description'][8])
+         st.text(df['Description'][8])
          content9 = df['Description'][8]
          st.download_button('Download', content9)
       book10 = st.checkbox('[2]Harry Potter - The Worst Birthday')
