@@ -280,7 +280,7 @@ if choice == '📝 Summarize':
                   if (sentence in sentence_weight) and (sentence_weight[sentence] > (1.25* average)): 
                      summary += " " + sentence 
                      counter+=1
-               st.write(counter,summary,sep='\n\n')
+               #st.write(counter,summary,sep='\n\n')
      
          
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
