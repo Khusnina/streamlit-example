@@ -411,9 +411,9 @@ if choice == '📝 Summarize':
          Df['Description']=Df['Description'].apply(preprocess)
          st.dataframe(Df)
          
-         Df['Title'] = Df['Title'].apply(lambda x:preprocess(x))
-         Df['Description'] = Df['Description'].apply(lambda x:preprocess(x))
          for i in range(len(Df)):
+            Df['Title'] = Df['Title'].apply(lambda x:preprocess(x))
+            Df['Description'] = Df['Description'].apply(lambda x:preprocess(x))
             st.text(Df['Title'][i],Df['Description'][i])
  
 if choice == '📊 Result':
