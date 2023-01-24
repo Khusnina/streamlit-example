@@ -154,37 +154,37 @@ if choice == '📚 Fiction Books':
       book10 = st.checkbox('[2]Harry Potter - The Worst Birthday')
       if book10:
          st.write(df['Title'][9])
-         st.write(df['Description'][9])
+         st.text(df['Description'][9])
          content10 = df['Description'][9]
          st.download_button('Download', content10)
       book11 = st.checkbox('[3]Harry Potter - Owl Post')
       if book11:
          st.write(df['Title'][10])
-         st.write(df['Description'][10])
+         st.text(df['Description'][10])
          content11 = df['Description'][10]
          st.download_button('Download', content11)
       book12 = st.checkbox('[4]Harry Potter - The Riddle House')
       if book12:
          st.write(df['Title'][11])
-         st.write(df['Description'][11])
+         st.text(df['Description'][11])
          content12 = df['Description'][11]
          st.download_button('Download', content12)
       book13 = st.checkbox('[5]Harry Potter - Dudley Demented')
       if book13:
          st.write(df['Title'][12])
-         st.write(df['Description'][12])
+         st.text(df['Description'][12])
          content13 = df['Description'][12]
          st.download_button('Download', content13)
       book14 = st.checkbox('[6]Harry Potter - The Other Minister')
       if book14:
          st.write(df['Title'][13])
-         st.write(df['Description'][13])
+         st.text(df['Description'][13])
          content14 = df['Description'][13]
          st.download_button('Download', content14)
       book15 = st.checkbox('[7]Harry Potter - The Dark Lord Ascending')
       if book15:
          st.write(df['Title'][14])
-         st.write(df['Description'][14])
+         st.text(df['Description'][14])
          content15 = df['Description'][14]
          st.download_button('Download', content15)
 
