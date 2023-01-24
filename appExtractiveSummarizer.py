@@ -413,26 +413,8 @@ if choice == '📝 Summarize':
          
          Df['Title'] = Df['Title'].apply(lambda x:preprocess(x))
          Df['Description'] = Df['Description'].apply(lambda x:preprocess(x))
-         st.write(Df['Title'][10],Df['Description'][10])
-         """
-         def remove_newlines_tabs(Df):
-            # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
-            Df['Description'] = Df['Description'].str.replace('\n\n\n\n', ' ')
-            Df['Description'] = Df['Description'].str.replace('\n\n', ' ')
-            Df['Description'] = Df['Description'].str.replace('\n', ' ')
-            Df['Description'] = Df['Description'].str.replace('/', ' ')
-            Df['Description'] = Df['Description'].str.replace('    ', ' ')
-            Formatted_text = Df['Description'].str.replace('   ', ' ')
-            return Formatted_text
-         Df['Description'] = remove_newlines_tabs(Df)
-         Df['Description'] = Df['Description'].replace('? ', '. ')
-         Df['Description'] = Df['Description'].replace('*', '')
-         Df['Description'] = Df['Description'].replace('\r', '')
-         Df['Description'] = Df['Description'].replace('Page|', '')
-         
-         st.success('Replacing occurrences of tabs, line, special characters with a space.', icon="✅")
-         st.write(Df['Description'])
-         """
+         for i in range(len(Df)):
+            st.text(Df['Title'][i],Df['Description'][i])
  
 if choice == '📊 Result':
    st.info("Result (TXT file)")
