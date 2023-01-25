@@ -437,7 +437,7 @@ if choice == '📝 Summarize':
          for i in df['Title']:
             #sum_len=[len(i.split()) for i in Y_train]
             headline_word_count.append(len(i.split()))
-         length_df = pd.DataFrame({'text':text_word_count, 'headline':headline_word_count})
+         length_df = pd.DataFrame({'Description':text_word_count, 'Title':headline_word_count})
          length_df.hist(bins = 50)
          plt.show()   
          #plt.hist(book_len,bins=100)
