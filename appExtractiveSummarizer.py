@@ -416,7 +416,7 @@ if choice == '📝 Summarize':
             st.write(i+1, "Description")
             st.write(sToken)
          
-         X_train,X_val,Y_train,Y_val=train_test_split(Df['Description'],Df['Title'],test_size=0.5,random_state=20)
+         X_train,X_val,Y_train,Y_val=train_test_split(Df['Description'],Df['Title'],test_size=0.3,random_state=20)
          st.write(len(X_train),len(Y_train))
          st.write(len(X_val),len(Y_val))
          
