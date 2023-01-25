@@ -9,3 +9,4 @@ contractions
 networkx
 neattext
 scikit-learn
+matplotlib
