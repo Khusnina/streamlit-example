@@ -428,15 +428,24 @@ if choice == '📝 Summarize':
          st.write(len(X_train),len(Y_train))
          st.write(len(X_val),len(Y_val))
          
-         sns.distplot(Df['Description'])
-         book_len=[len(i.split()) for i in X_train]
-         sum_len=[len(i.split()) for i in Y_train]
-         plt.hist(book_len,bins=100)
-         plt.title('Book')
-         plt.show()
-         plt.hist(sum_len,bins=50)
-         plt.title('Summary')
-         plt.show()
+         text_word_count = []
+         headline_word_count = []
+         for i in df['Description']:
+            #book_len=[len(i.split()) for i in X_train]
+            text_word_count.append(len(i.split()))
+
+         for i in df['Title']:
+            #sum_len=[len(i.split()) for i in Y_train]
+            headline_word_count.append(len(i.split()))
+         length_df = pd.DataFrame({'text':text_word_count, 'headline':headline_word_count})
+         length_df.hist(bins = 50)
+         plt.show()   
+         #plt.hist(book_len,bins=100)
+         #plt.title('Book')
+         #plt.show()
+         #plt.hist(sum_len,bins=50)
+         #plt.title('Summary')
+         #plt.show()
          
 if choice == '📊 Result':
    st.info("Result (TXT file)")
