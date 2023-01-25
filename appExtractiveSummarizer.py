@@ -22,6 +22,7 @@ from string import punctuation
 from nltk.cluster.util import cosine_distance
 import networkx as nx
 import neattext.functions as nfx
+from sklearn.model_selection import train_test_split
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
@@ -418,6 +419,7 @@ if choice == '📝 Summarize':
          X_train,X_val,Y_train,Y_val=train_test_split(Df['Description'],Df['Title'],test_size=0.3,random_state=10)
          st.write(len(X_train),len(Y_train))
          st.write(len(X_val),len(Y_val))
+         
 if choice == '📊 Result':
    st.info("Result (TXT file)")
    st.info("Result (CSV file)")
