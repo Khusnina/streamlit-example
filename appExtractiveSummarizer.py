@@ -393,6 +393,11 @@ if choice == '📝 Summarize':
             text = re.sub(r'\.',' . ',text)
             return text
          
+         st.success('Cleaned', icon="✅")
+         Df['Description']=Df['Description'].apply(clean_text)
+         Df['Description']=Df['Description'].apply(preprocess)
+         st.dataframe(Df)
+         
          stop = stopwords.words('english')
          Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
          st.success('Stopwords', icon="✅")
@@ -405,13 +410,8 @@ if choice == '📝 Summarize':
             sToken = nltk.word_tokenize(Df['Description'][i])
             st.write(i+1, "Description")
             st.write(sToken)
-            
-         st.success('Cleaned', icon="✅")
-         Df['Description']=Df['Description'].apply(clean_text)
-         Df['Description']=Df['Description'].apply(preprocess)
-         st.dataframe(Df)
          
-         X_train,X_val,Y_train,Y_val=train_test_split(data['Description'],data['Description'],test_size=0.3,random_state=10)
+         X_train,X_val,Y_train,Y_val=train_test_split(Df['Description'],Df['Title'],test_size=0.3,random_state=10)
          st.write(len(X_train),len(Y_train))
          st.write(len(X_val),len(Y_val))
 if choice == '📊 Result':
