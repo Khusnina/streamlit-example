@@ -428,18 +428,26 @@ if choice == '📝 Summarize':
          st.write(len(X_train),len(Y_train))
          st.write(len(X_val),len(Y_val))
          
-         text_word_count = []
-         headline_word_count = []
-         for i in df['Description']:
-            #book_len=[len(i.split()) for i in X_train]
-            text_word_count.append(len(i.split()))
+         def get_out_vector(text,summary,n=40):
+            new_vec  = np.zeros(n)
+            for txt in summary.split():
+               if txt in text:
+                  for i,word in enumerate(text.split()):
+                     if word == txt:
+                        new_vec[i] = 1
+            return new_vec
 
-         for i in df['Title']:
-            #sum_len=[len(i.split()) for i in Y_train]
-            headline_word_count.append(len(i.split()))
-         length_df = pd.DataFrame({'Description':text_word_count, 'Title':headline_word_count})
-         length_df.hist(bins = 50)
-         plt.show()   
+         def get_summary(text,new_vec,thresh = 0.5):
+            summary = []
+            for i,word in enumerate(text.split()):
+               if new_vec[i] >= thresh:
+                  summary.append(word)
+            return " ".join(summary)
+         
+         vec = (get_out_vector(Df['Description'],Df['Title'],15))
+         st.write(get_summary(Df['Description'],vec))
+         #book_len=[len(i.split()) for i in X_train]
+         #sum_len=[len(i.split()) for i in Y_train]
          #plt.hist(book_len,bins=100)
          #plt.title('Book')
          #plt.show()
