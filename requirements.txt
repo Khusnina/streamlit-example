@@ -11,3 +11,4 @@ neattext
 scikit-learn
 matplotlib
 tensorflow
+seaborn
