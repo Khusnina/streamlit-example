@@ -11,4 +11,3 @@ neattext
 scikit-learn
 matplotlib
 tensorflow
-os
