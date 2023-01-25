@@ -299,19 +299,24 @@ if choice == '📝 Summarize':
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
    if uploaded_file is not None:
       st.write("ORIGINAL CONTENT")
-      st.write(type(uploaded_file))
+      type_file = type(uploaded_file)
       file_details = {"filename":uploaded_file.name,"filetype":uploaded_file.type,"filesize":uploaded_file.size}
-      st.write(file_details)
       Df = pd.read_csv(uploaded_file)
       st.write("List Fiction Book")
       st.dataframe(Df)
-      st.write("Shape")
-      st.write(Df.shape)
-      st.write("Info")
-      buffer = io.StringIO()
-      Df.info(buf=buffer)
-      s = buffer.getvalue()
-      st.text(s)
+      check_info = st.checkbox('File Information')
+      if check_info:
+         st.write("File Type")
+         st.write(type_file)
+         st.write("File Details")
+         st.write(file_details)
+         st.write("Shape")
+         st.write(Df.shape)
+         st.write("Info")
+         buffer = io.StringIO()
+         Df.info(buf=buffer)
+         s = buffer.getvalue()
+         st.text(s)
       
       if st.button('Summarize file'):
          st.info("Results")
