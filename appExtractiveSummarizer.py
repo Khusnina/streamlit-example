@@ -11,6 +11,7 @@ import contractions
 import nltk
 import tensorflow as tf
 import os
+import seaborn as sns
 nltk.download('stopwords')
 nltk.download('punkt')
 from nltk.corpus import stopwords 
@@ -432,9 +433,9 @@ if choice == '📝 Summarize':
          plt.hist(book_len,bins=100)
          plt.title('Book')
          plt.show()
-         #plt.hist(sum_len,bins=50)
-         #plt.title('Summary')
-         #plt.show()
+         plt.hist(sum_len,bins=50)
+         plt.title('Summary')
+         plt.show()
          
 if choice == '📊 Result':
    st.info("Result (TXT file)")
