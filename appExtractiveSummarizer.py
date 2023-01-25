@@ -325,7 +325,6 @@ if choice == '📝 Summarize':
          Df.info(buf=buffer)
          s = buffer.getvalue()
          st.text(s)
-         st.write(Df.corr())
       
       if st.button('Summarize file'):
          st.info("Results")
@@ -429,6 +428,7 @@ if choice == '📝 Summarize':
          st.write(len(X_train),len(Y_train))
          st.write(len(X_val),len(Y_val))
          
+         sns.distplot(Df['Description'])
          book_len=[len(i.split()) for i in X_train]
          sum_len=[len(i.split()) for i in Y_train]
          plt.hist(book_len,bins=100)
