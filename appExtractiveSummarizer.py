@@ -23,6 +23,7 @@ from nltk.cluster.util import cosine_distance
 import networkx as nx
 import neattext.functions as nfx
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
@@ -419,6 +420,15 @@ if choice == '📝 Summarize':
          X_train,X_val,Y_train,Y_val=train_test_split(Df['Description'],Df['Title'],test_size=0.3,random_state=20)
          st.write(len(X_train),len(Y_train))
          st.write(len(X_val),len(Y_val))
+         
+         art_len=[len(i.split()) for i in X_train]
+         sum_len=[len(i.split()) for i in Y_train]
+         plt.hist(art_len,bins=100)
+         plt.title('Book')
+         plt.show()
+         plt.hist(sum_len,bins=50)
+         plt.title('Summary')
+         plt.show()
          
 if choice == '📊 Result':
    st.info("Result (TXT file)")
