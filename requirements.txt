@@ -10,3 +10,5 @@ networkx
 neattext
 scikit-learn
 matplotlib
+tensorflow
+os
