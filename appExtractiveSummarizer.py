@@ -411,7 +411,7 @@ if choice == '📝 Summarize':
          Df['Description']=Df['Description'].apply(preprocess)
          st.dataframe(Df)
          
-         X_train,X_val,Y_train,Y_val=train_test_split(data['Description'],data['Title'],test_size=0.3,random_state=29)
+         X_train,X_val,Y_train,Y_val=train_test_split(data['Description'],data['Description'],test_size=0.3,random_state=10)
          st.write(len(X_train),len(Y_train))
          st.write(len(X_val),len(Y_val))
 if choice == '📊 Result':
