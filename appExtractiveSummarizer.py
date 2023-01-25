@@ -427,9 +427,9 @@ if choice == '📝 Summarize':
          st.write(len(X_train),len(Y_train))
          st.write(len(X_val),len(Y_val))
          
-         art_len=[len(i.split()) for i in X_train]
+         book_len=[len(i.split()) for i in X_train]
          sum_len=[len(i.split()) for i in Y_train]
-         plt.hist(art_len,bins=100)
+         plt.hist(book_len,bins=100)
          plt.title('Book')
          plt.show()
          plt.hist(sum_len,bins=50)
