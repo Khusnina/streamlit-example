@@ -9,6 +9,8 @@ import time
 import string
 import contractions
 import nltk
+import tensorflow as tf
+import os
 nltk.download('stopwords')
 nltk.download('punkt')
 from nltk.corpus import stopwords 
