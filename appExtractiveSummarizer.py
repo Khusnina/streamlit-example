@@ -429,13 +429,12 @@ if choice == '📝 Summarize':
          
          book_len=[len(i.split()) for i in X_train]
          sum_len=[len(i.split()) for i in Y_train]
-         #plt.hist(book_len,bins=100)
-         plt.hist(Df['Description'])
+         plt.hist(book_len,bins=100)
          plt.title('Book')
          plt.show()
-         plt.hist(sum_len,bins=50)
-         plt.title('Summary')
-         plt.show()
+         #plt.hist(sum_len,bins=50)
+         #plt.title('Summary')
+         #plt.show()
          
 if choice == '📊 Result':
    st.info("Result (TXT file)")
