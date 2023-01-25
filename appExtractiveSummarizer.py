@@ -302,7 +302,6 @@ if choice == '📝 Summarize':
       type_file = type(uploaded_file)
       file_details = {"filename":uploaded_file.name,"filetype":uploaded_file.type,"filesize":uploaded_file.size}
       Df = pd.read_csv(uploaded_file)
-      st.write("List Fiction Book")
       st.dataframe(Df)
       check_info = st.checkbox('File Information')
       if check_info:
