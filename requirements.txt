@@ -8,3 +8,4 @@ spacy
 contractions
 networkx
 neattext
+scikit-learn
