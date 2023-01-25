@@ -325,7 +325,7 @@ if choice == '📝 Summarize':
          Df.info(buf=buffer)
          s = buffer.getvalue()
          st.text(s)
-         Df.corr()
+         st.write(Df.corr())
       
       if st.button('Summarize file'):
          st.info("Results")
