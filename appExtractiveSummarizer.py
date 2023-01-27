@@ -33,7 +33,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense,LSTM,Bidirectional,Flatten,Dropout,BatchNormalization,Embedding,Input,TimeDistributed
 from tensorflow.keras.utils import plot_model
 from keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+from keras.preprocessing.sequence import pad_sequences
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
@@ -478,16 +478,16 @@ if choice == '📝 Summarize':
          countOfWords3 = len(Df['Description'][2].split())
          countOfWords4 = len(Df['Description'][3].split())
          countOfWords5 = len(Df['Description'][4].split())
-         countOfWords6= len(Df['Description'][5].split())
-         countOfWords7= len(Df['Description'][6].split())
-         countOfWords8= len(Df['Description'][7].split())
-         countOfWords9= len(Df['Description'][8].split())
-         countOfWords10=len(Df['Description'][9].split())
-         countOfWords11= len(Df['Description'][10].split())
-         countOfWords12= len(Df['Description'][11].split())
-         countOfWords13 len(Df['Description'][12].split())
-         countOfWords14= len(Df['Description'][13].split())
-         countOfWords15= len(Df['Description'][14].split())
+         countOfWords6 = len(Df['Description'][5].split())
+         countOfWords7 = len(Df['Description'][6].split())
+         countOfWords8 = len(Df['Description'][7].split())
+         countOfWords9 = len(Df['Description'][8].split())
+         countOfWords10 = len(Df['Description'][9].split())
+         countOfWords11 = len(Df['Description'][10].split())
+         countOfWords12 = len(Df['Description'][11].split())
+         countOfWords13 = len(Df['Description'][12].split())
+         countOfWords14 = len(Df['Description'][13].split())
+         countOfWords15 = len(Df['Description'][14].split())
          
          countOfW = [countOfWords1, countOfWords2, countOfWords3, countOfWords4, countOfWords5, countOfWords6, countOfWords7, countOfWords8, countOfWords9, countOfWords10, countOfWords11, countOfWords12, countOfWords13, countOfWords14, countOfWords15]
          Df['Total Words'] = countOfW
