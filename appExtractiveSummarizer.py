@@ -473,8 +473,25 @@ if choice == '📝 Summarize':
          s_max_features = total_count-count
          st.write("Summary Vocab: ", s_max_features)
          
-         countOfWords = len(Df['Description'][0].split())
-         st.write("Count of Words in row1:", countOfWords)
+         countOfWords1 = len(Df['Description'][0].split())
+         countOfWords2 = len(Df['Description'][1].split())
+         countOfWords3 = len(Df['Description'][2].split())
+         countOfWords4 = len(Df['Description'][3].split())
+         countOfWords5 = len(Df['Description'][4].split())
+         countOfWords6= len(Df['Description'][5].split())
+         countOfWords7= len(Df['Description'][6].split())
+         countOfWords8= len(Df['Description'][7].split())
+         countOfWords9= len(Df['Description'][8].split())
+         countOfWords10=len(Df['Description'][9].split())
+         countOfWords11= len(Df['Description'][10].split())
+         countOfWords12= len(Df['Description'][11].split())
+         countOfWords13 len(Df['Description'][12].split())
+         countOfWords14= len(Df['Description'][13].split())
+         countOfWords15= len(Df['Description'][14].split())
+         
+         countOfW = [countOfWords1, countOfWords2, countOfWords3, countOfWords4, countOfWords5, countOfWords6, countOfWords7, countOfWords8, countOfWords9, countOfWords10, countOfWords11, countOfWords12, countOfWords13, countOfWords14, countOfWords15]
+         Df['Total Words'] = countOfW
+         st.dataframe(Df)
          
          count_val = Df['Description'].value_counts()
          st.write(count_val)
