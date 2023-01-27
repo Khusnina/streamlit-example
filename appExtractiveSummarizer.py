@@ -473,30 +473,8 @@ if choice == '📝 Summarize':
          s_max_features = total_count-count
          st.write("Summary Vocab: ", s_max_features)
          
-         maxlen_text = 800
-         maxlen_summ = 150
-         val_x = test_x
-         t_tokenizer = Tokenizer(num_words=t_max_features)
-         t_tokenizer.fit_on_texts(list(train_x))
-         train_x = t_tokenizer.texts_to_sequences(train_x)
-         val_x = t_tokenizer.texts_to_sequences(val_x)
-
-         train_x = pad_sequences(train_x, maxlen=maxlen_text, padding='post')
-         val_x = pad_sequences(val_x, maxlen=maxlen_text, padding='post')
-         
-         val_y = test_y
-         s_tokenizer = Tokenizer(num_words=s_max_features)
-         s_tokenizer.fit_on_texts(list(train_y))
-         train_y = s_tokenizer.texts_to_sequences(train_y)
-         val_y = s_tokenizer.texts_to_sequences(val_y)
-
-         train_y = pad_sequences(train_y, maxlen=maxlen_summ, padding='post')
-         val_y = pad_sequences(val_y, maxlen=maxlen_summ, padding='post')
-         
-         st.write("Training Sequence", train_x.shape)
-         st.write("Target Values Shape", train_y.shape)
-         st.write("Test Sequence", val_x.shape)
-         st.write("Target Test Shape", val_y.shape)
+         count_val = Df['Description'].value_counts()
+         st.write(count_val)
          
          def get_out_vector(text,summary,n=40):
             new_vec  = np.zeros(n)
