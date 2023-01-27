@@ -493,7 +493,7 @@ if choice == '📝 Summarize':
          Df['Total Words'] = countOfW
          st.dataframe(Df)
          
-         sentences1 = len(sent_tokenize(Df['Description'][0]))
+         sentences1 = len(nltk.sent_tokenize(Df['Description'][0]))
          st.write(sentence1)
          
 if choice == '📊 Result':
