@@ -424,9 +424,31 @@ if choice == '📝 Summarize':
             st.write(i+1, "Description")
             st.write(sToken)
          
-         X_train,X_val,Y_train,Y_val=train_test_split(Df['Description'],Df['Title'],test_size=0.3,random_state=20)
-         st.write(len(X_train),len(Y_train))
-         st.write(len(X_val),len(Y_val))
+         #X_train,X_val,Y_train,Y_val=train_test_split(Df['Description'],Df['Title'],test_size=0.3,random_state=20)
+         #st.write(len(X_train),len(Y_train))
+         #st.write(len(X_val),len(Y_val))
+         
+         train_x, test_x, train_y, test_y = train_test_split(Df['text'], Df['summary'], test_size=0.3, random_state=20)
+         t_tokenizer = Tokenizer()
+         t_tokenizer.fit_on_texts(list(train_x))
+
+         thresh = 4
+         count = 0
+         total_count = 0
+         frequency = 0
+         total_frequency = 0
+
+         for key, value in t_tokenizer.word_counts.items():
+            total_count += 1
+            total_frequency += value
+            if value < thresh:
+               count += 1
+               frequency += value
+         
+         st.write("% of rare words in vocabulary: ", (count/total_count)*100.0)
+         st.write("Total Coverage of rare words: ", (frequency/total_frequency)*100.0)
+         s_max_features = total_count-count
+         st.write("Summary Vocab: ", s_max_features)
          
          def get_out_vector(text,summary,n=40):
             new_vec  = np.zeros(n)
@@ -444,8 +466,8 @@ if choice == '📝 Summarize':
                   summary.append(word)
             return " ".join(summary)
          
-         vec = (get_out_vector(Df['Description'],Df['Title'],15))
-         st.write(get_summary(Df['Description'],vec))
+         #vec = (get_out_vector(Df['Description'],Df['Title'],15))
+         #st.write(get_summary(Df['Description'],vec))
          #book_len=[len(i.split()) for i in X_train]
          #sum_len=[len(i.split()) for i in Y_train]
          #plt.hist(book_len,bins=100)
