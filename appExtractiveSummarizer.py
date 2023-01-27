@@ -473,6 +473,9 @@ if choice == '📝 Summarize':
          s_max_features = total_count-count
          st.write("Summary Vocab: ", s_max_features)
          
+         countOfWords = len(Df['Description'][0].split())
+         st.write("Count of Words in row1:", countOfWords)
+         
          count_val = Df['Description'].value_counts()
          st.write(count_val)
          
