@@ -33,8 +33,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense,LSTM,Bidirectional,Flatten,Dropout,BatchNormalization,Embedding,Input,TimeDistributed
 from tensorflow.keras.utils import plot_model
 from keras.preprocessing.text import Tokenizer
-#from keras.preprocessing.sequence import pad_sequences
-from keras.utils import pad_sequences
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 st.set_page_config(page_title="Extractive Text Summarization", page_icon=":tada:", layout="wide")
 st.markdown("<h1 style='text-align: center; color: white;'>ONLINE ENGLISH FICTION BOOK REVIEWS EXTRACTIVE TEXT SUMMARIZATION SYSTEM VIA MACHINE LEARNING APPROACHES</h1>", unsafe_allow_html=True)
