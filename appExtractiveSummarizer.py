@@ -84,7 +84,27 @@ if choice == '📚 Fiction Books':
       df['Description'] = df['Description'].replace('*', '')
       df['Description'] = df['Description'].replace('; ', '')
       df['Description'] = df['Description'].replace(', ', '')
-      df['Description'] = df['Description'].replace('â', '')
+      def preprocess(text):
+            text = text.lower() # lowercase
+            text = text.split() # convert have'nt -> have not
+            for i in range(len(text)):
+               word = text[i]
+               if word in contraction_mapping:
+                  text[i] = contraction_mapping[word]
+            text = " ".join(text)
+            text = text.split()
+            newtext = []
+            for word in text:
+               if word not in stop_words:
+                  newtext.append(word)
+            text = " ".join(newtext)
+            text = text.replace("'s",'') # convert your's -> your
+            text = re.sub(r'\(.*\)','',text) # remove (words)
+            text = re.sub(r'[^a-zA-Z0-9. ]','',text) # remove punctuations
+            text = re.sub(r'\.',' . ',text)
+            return text
+         
+      Df['Description']=Df['Description'].apply(preprocess)
       st.write("List of Fiction Book after processing")
       st.write(df.head(20))
       st.download_button("Download CSV",
