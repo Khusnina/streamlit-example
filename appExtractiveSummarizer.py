@@ -496,33 +496,6 @@ if choice == '📝 Summarize':
          count_val = Df['Description'].value_counts()
          st.write(count_val)
          
-         def get_out_vector(text,summary,n=40):
-            new_vec  = np.zeros(n)
-            for txt in summary.split():
-               if txt in text:
-                  for i,word in enumerate(text.split()):
-                     if word == txt:
-                        new_vec[i] = 1
-            return new_vec
-
-         def get_summary(text,new_vec,thresh = 0.5):
-            summary = []
-            for i,word in enumerate(text.split()):
-               if new_vec[i] >= thresh:
-                  summary.append(word)
-            return " ".join(summary)
-         
-         #vec = (get_out_vector(Df['Description'],Df['Title'],15))
-         #st.write(get_summary(Df['Description'],vec))
-         #book_len=[len(i.split()) for i in X_train]
-         #sum_len=[len(i.split()) for i in Y_train]
-         #plt.hist(book_len,bins=100)
-         #plt.title('Book')
-         #plt.show()
-         #plt.hist(sum_len,bins=50)
-         #plt.title('Summary')
-         #plt.show()
-         
 if choice == '📊 Result':
    st.info("Result (TXT file)")
    st.info("Result (CSV file)")
