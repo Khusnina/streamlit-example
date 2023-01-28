@@ -498,7 +498,7 @@ if choice == '📝 Summarize':
          str1 = textwrap.shorten(Df['Description'][0], width = 1500, placeholder = '.')
          data = [[Df['Description'][0], str1]]
          col_names = ["Original Content", "Summary"]
-         st.write(tabulate(data, headers=col_names))
+         st.write(tabulate(data, headers=col_names, tablefmt="fancy_grid", showindex="always"))
          st.write(Df['Description'][0])
          st.write(str1)
          
