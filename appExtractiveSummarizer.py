@@ -494,6 +494,9 @@ if choice == '📝 Summarize':
          Df['Total Words'] = countOfW
          st.dataframe(Df)
          
+         str1 = textwrap.shorten(Df['Description'][0], width = 50, placeholder = '.')
+         st.write(Df['Description'][0])
+         st.write(str1)
          
 if choice == '📊 Result':
    st.info("Result (TXT file)")
