@@ -520,13 +520,13 @@ if choice == '📝 Summarize':
             )
 
          # Boolean to resize the dataframe, stored as a session state variable
-         #st.checkbox("Use container width", value=False, key="use_container_width")
+         st.checkbox("Use container width", value=False, key="use_container_width")
 
          df = load_data()
 
          # Display the dataframe and allow the user to stretch the dataframe
          # across the full width of the container, based on the checkbox value
-         st.dataframe(df, use_container_width=st.session_state.use_container_width, use_container_width=False)
+         st.dataframe(df, use_container_width=st.session_state.use_container_width)
          
 if choice == '📊 Result':
    st.info("Result (TXT file)")
