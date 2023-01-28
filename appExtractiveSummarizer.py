@@ -525,6 +525,7 @@ if choice == '📝 Summarize':
          str14 = textwrap.shorten(Df['Description'][13], width=1500, placeholder='.')
          str15 = textwrap.shorten(Df['Description'][14], width=1500, placeholder='.')
          
+         st.write(len(str1))
          # Cache the dataframe so it's only loaded once
          @st.experimental_memo
          def load_data():
@@ -534,6 +535,7 @@ if choice == '📝 Summarize':
                   "Orignal Content" : [original1, original2, original3, original4, original5, original6, original7, original8, original9, original10, original11, original12, original13, original14, original15],
                   #"Original Content": [Df['Description'][0], Df['Description'][1], Df['Description'][2], Df['Description'][3], Df['Description'][4], Df['Description'][5], Df['Description'][6], Df['Description'][7], Df['Description'][8], Df['Description'][9], Df['Description'][10], Df['Description'][11], Df['Description'][12], Df['Description'][13], Df['Description'][14]],
                   "Summary": [str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14, str15],
+                  
                }
             )
 
