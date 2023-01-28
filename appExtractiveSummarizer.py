@@ -504,7 +504,7 @@ if choice == '📝 Summarize':
             return pd.DataFrame(
                {
                   "Original Content": [[Df['Description'][0], 2, 3, 4],
-                  "Summary": [str1, 20, 30, 40],
+                  "Summary": [str1, 20, 30, 40]
                }
             )
 
