@@ -397,7 +397,7 @@ if choice == '📝 Summarize':
 
                            "you'd": "you would", "you'd've": "you would have", "you'll": "you will", "you'll've": "you will have",
 
-                           "you're": "you are", "you've": "you have", "chapter": "", "page" : ""}
+                           "you're": "you are", "you've": "you have", "chapter": "", "page" : "", "j k r w l n g" : "", "ab" : "", "j" : ""}
          
          def clean_text(text):
             text=text.lower()
