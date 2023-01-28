@@ -492,8 +492,9 @@ if choice == '📝 Summarize':
          countOfW = [countOfWords1, countOfWords2, countOfWords3, countOfWords4, countOfWords5, countOfWords6, countOfWords7, countOfWords8, countOfWords9, countOfWords10, countOfWords11, countOfWords12, countOfWords13, countOfWords14, countOfWords15]
          Df['Total Words'] = countOfW
          st.dataframe(Df)
-         sentences1 = sent_tokenize(Df['Description'][0])
-         st.write(sent_tokenize(Df['Description'][0]))
+         sentences = sent_tokenize(Df['Description'][0]) 
+         for sen in sentences:
+            st.write(sen,"\n")
          
 if choice == '📊 Result':
    st.info("Result (TXT file)")
