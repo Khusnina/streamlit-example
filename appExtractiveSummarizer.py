@@ -64,6 +64,10 @@ if choice == '📚 Fiction Books':
    df = pd.read_csv(url,encoding="latin-1")
    st.write("List of Fiction Book")
    st.write(df.head(20))
+   st.download_button("Download CSV",
+                         df.to_csv(),
+                         file_name = 'listBook.csv',
+                         mime = 'text/csv')
    st.write("Shape")
    st.write(df.shape)
    st.write("Info")
