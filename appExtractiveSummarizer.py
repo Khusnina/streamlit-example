@@ -512,6 +512,7 @@ if choice == '📝 Summarize':
          def load_data():
             return pd.DataFrame(
                {
+                  "Title": [Df['Title'][0], Df['Title'][1], Df['Title'][2], Df['Title'][3], Df['Title'][4], Df['Title'][5], Df['Title'][6], Df['Title'][7], Df['Title'][8], Df['Title'][9], Df['Title'][10], Df['Title'][11], Df['Title'][12], Df['Title'][13], Df['Title'][14]],
                   "Original Content": [Df['Description'][0], Df['Description'][1], Df['Description'][2], Df['Description'][3], Df['Description'][4], Df['Description'][5], Df['Description'][6], Df['Description'][7], Df['Description'][8], Df['Description'][9], Df['Description'][10], Df['Description'][11], Df['Description'][12], Df['Description'][13], Df['Description'][14]],
                   "Summary": [str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14, str15],
                }
