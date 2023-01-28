@@ -498,9 +498,24 @@ if choice == '📝 Summarize':
          str1 = textwrap.shorten(Df['Description'][0], width = 1500, placeholder = '.')
          data = [[Df['Description'][0], str1]]
          col_names = ["Original Content", "Summary"]
-         st.write(tabulate(data, headers=col_names, tablefmt="fancy_grid", showindex="always"))
-         st.write(Df['Description'][0])
-         st.write(str1)
+         # Cache the dataframe so it's only loaded once
+         @st.experimental_memo
+         def load_data():
+            return pd.DataFrame(
+               {
+                  "Original Content": [[Df['Description'][0], 2, 3, 4],
+                  "Summary": [str1, 20, 30, 40],
+               }
+            )
+
+         # Boolean to resize the dataframe, stored as a session state variable
+         st.checkbox("Use container width", value=False, key="use_container_width")
+
+         df = load_data()
+
+         # Display the dataframe and allow the user to stretch the dataframe
+         # across the full width of the container, based on the checkbox value
+         st.dataframe(df, use_container_width=st.session_state.use_container_width)
          
 if choice == '📊 Result':
    st.info("Result (TXT file)")
