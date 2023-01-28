@@ -447,7 +447,7 @@ if choice == '📝 Summarize':
             return text
          
          st.success('Cleaned', icon="✅")
-         Df['Description']=Df['Description'].apply(clean_text)
+         #Df['Description']=Df['Description'].apply(clean_text)
          Df['Description']=Df['Description'].apply(preprocess)
          st.dataframe(Df)
          
