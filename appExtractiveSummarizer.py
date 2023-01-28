@@ -499,7 +499,10 @@ if choice == '📝 Summarize':
                   "Summary": [str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14, str15],
                }
             )
-
+         
+         # Boolean to resize the dataframe, stored as a session state variable
+         st.checkbox("Use container width", value=False, key="use_container_width")
+         
          df = load_data()
 
          # Display the dataframe and allow the user to stretch the dataframe
