@@ -491,25 +491,6 @@ if choice == '📝 Summarize':
          countOfWords14 = len(Df['Description'][13].split())
          countOfWords15 = len(Df['Description'][14].split())
          
-         countOfW = [countOfWords1, countOfWords2, countOfWords3, countOfWords4, countOfWords5, countOfWords6, countOfWords7, countOfWords8, countOfWords9, countOfWords10, countOfWords11, countOfWords12, countOfWords13, countOfWords14, countOfWords15]
-         Df['Total Words'] = countOfW
-         st.dataframe(Df)
-         
-         str1 = textwrap.shorten(Df['Description'][0], width = 1500, placeholder = '.')
-         str2 = textwrap.shorten(Df['Description'][1], width = 1500, placeholder = '.')
-         str3 = textwrap.shorten(Df['Description'][2], width = 1500, placeholder = '.')
-         str4 = textwrap.shorten(Df['Description'][3], width = 1500, placeholder = '.')
-         str5 = textwrap.shorten(Df['Description'][4], width = 1500, placeholder = '.')
-         str6 = textwrap.shorten(Df['Description'][5], width = 1500, placeholder = '.')
-         str7 = textwrap.shorten(Df['Description'][6], width = 1500, placeholder = '.')
-         str8 = textwrap.shorten(Df['Description'][7], width = 1500, placeholder = '.')
-         str9 = textwrap.shorten(Df['Description'][8], width = 1500, placeholder = '.')
-         str10 = textwrap.shorten(Df['Description'][9], width = 1500, placeholder = '.')
-         str11 = textwrap.shorten(Df['Description'][10], width = 1500, placeholder = '.')
-         str12 = textwrap.shorten(Df['Description'][11], width = 1500, placeholder = '.')
-         str13 = textwrap.shorten(Df['Description'][12], width = 1500, placeholder = '.')
-         str14 = textwrap.shorten(Df['Description'][13], width = 1500, placeholder = '.')
-         str15 = textwrap.shorten(Df['Description'][14], width = 1500, placeholder = '.')
          # Cache the dataframe so it's only loaded once
          def load_data():
             return pd.DataFrame(
@@ -518,9 +499,6 @@ if choice == '📝 Summarize':
                   "Summary": [str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14, str15],
                }
             )
-
-         # Boolean to resize the dataframe, stored as a session state variable
-         st.checkbox("Use container width", value=False, key="use_container_width")
 
          df = load_data()
 
