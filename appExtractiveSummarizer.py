@@ -491,15 +491,29 @@ if choice == '📝 Summarize':
          countOfWords14 = len(Df['Description'][13].split())
          countOfWords15 = len(Df['Description'][14].split())
          
+         str1 = textwrap.shorten('Df['Description'][0]', width=1500, placeholder='.')
+         str2 = textwrap.shorten('Df['Description'][1]', width=1500, placeholder='.')
+         str3 = textwrap.shorten('Df['Description'][2]', width=1500, placeholder='.')
+         str4 = textwrap.shorten('Df['Description'][3]', width=1500, placeholder='.')
+         str5 = textwrap.shorten('Df['Description'][4]', width=1500, placeholder='.')
+         str6 = textwrap.shorten('Df['Description'][5]', width=1500, placeholder='.')
+         str7 = textwrap.shorten('Df['Description'][6]', width=1500, placeholder='.')
+         str8 = textwrap.shorten('Df['Description'][7]', width=1500, placeholder='.')
+         str9 = textwrap.shorten('Df['Description'][8]', width=1500, placeholder='.')
+         str10 = textwrap.shorten('Df['Description'][9]', width=1500, placeholder='.')
+         str11 = textwrap.shorten('Df['Description'][10]', width=1500, placeholder='.')
+         str12 = textwrap.shorten('Df['Description'][11]', width=1500, placeholder='.')
+         str13 = textwrap.shorten('Df['Description'][12]', width=1500, placeholder='.')
+         str14 = textwrap.shorten('Df['Description'][13]', width=1500, placeholder='.')
+         str15 = textwrap.shorten('Df['Description'][14]', width=1500, placeholder='.')
+         
          # Cache the dataframe so it's only loaded once
          @st.experimental_memo
          def load_data():
             return pd.DataFrame(
                {
-                  #"Original Content": [Df['Description'][0], Df['Description'][1], Df['Description'][2], Df['Description'][3], Df['Description'][4], Df['Description'][5], Df['Description'][6], Df['Description'][7], Df['Description'][8], Df['Description'][9], Df['Description'][10], Df['Description'][11], Df['Description'][12], Df['Description'][13], Df['Description'][14]],
-                  #"Summary": [str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14, str15],
-                  "first column": [Df['Description'][0], 2, 3, 4],
-                  "second column": [str1, 20, 30, 40],
+                  "Original Content": [Df['Description'][0], Df['Description'][1], Df['Description'][2], Df['Description'][3], Df['Description'][4], Df['Description'][5], Df['Description'][6], Df['Description'][7], Df['Description'][8], Df['Description'][9], Df['Description'][10], Df['Description'][11], Df['Description'][12], Df['Description'][13], Df['Description'][14]],
+                  "Summary": [str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14, str15],
                }
             )
 
