@@ -534,9 +534,10 @@ if choice == '📝 Summarize':
                }
             )
 
+         st.success('Summary', icon="✅")
          # Boolean to resize the dataframe, stored as a session state variable
          st.checkbox("Use container width", value=False, key="use_container_width")
-
+         
          df = load_data()
 
          # Display the dataframe and allow the user to stretch the dataframe
