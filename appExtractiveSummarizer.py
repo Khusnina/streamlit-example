@@ -447,7 +447,7 @@ if choice == '📝 Summarize':
             return text
          
          st.success('Cleaned', icon="✅")
-         #Df['Description']=Df['Description'].apply(clean_text)
+         Df['Description']=Df['Description'].apply(clean_text)
          Df['Description']=Df['Description'].apply(preprocess)
          st.dataframe(Df)
          
@@ -505,6 +505,9 @@ if choice == '📝 Summarize':
          countOfWords13 = len(Df['Description'][12].split())
          countOfWords14 = len(Df['Description'][13].split())
          countOfWords15 = len(Df['Description'][14].split())
+         
+         Df['Words'] = [countOfWords1, countOfWords2, countOfWords3, countOfWords4, countOfWords5, countOfWords6, countOfWords7, countOfWords8, countOfWords9, countOfWords10, countOfWords11, countOfWords12, countOfWords13, countOfWords14, countOfWords15]
+         st.dataframe(Df)
          
          str1 = textwrap.shorten(Df['Description'][0], width=1500, placeholder='.')
          str2 = textwrap.shorten(Df['Description'][1], width=1500, placeholder='.')
