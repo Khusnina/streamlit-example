@@ -499,12 +499,11 @@ if choice == '📝 Summarize':
          data = [[Df['Description'][0], str1]]
          col_names = ["Original Content", "Summary"]
          # Cache the dataframe so it's only loaded once
-         @st.experimental_memo
          def load_data():
             return pd.DataFrame(
                {
                   "Original Content": [[Df['Description'][0], 2, 3, 4],
-                  "Summary": [str1, 20, 30, 40]
+                  "Summary": [str1, 20, 30, 40],
                }
             )
 
