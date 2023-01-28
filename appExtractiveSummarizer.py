@@ -18,6 +18,7 @@ nltk.download('punkt')
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.stem import WordNetLemmatizer
+from tabulate import tabulate
 from PIL import Image
 from string import punctuation
 import spacy
@@ -494,7 +495,10 @@ if choice == '📝 Summarize':
          Df['Total Words'] = countOfW
          st.dataframe(Df)
          
-         str1 = textwrap.shorten(Df['Description'][0], width = 800, placeholder = '.')
+         str1 = textwrap.shorten(Df['Description'][0], width = 1500, placeholder = '.')
+         data = [[Df['Description'][0], str1]]
+         col_names = ["Original Content", "Summary"]
+         st.write(tabulate(data, headers=col_names))
          st.write(Df['Description'][0])
          st.write(str1)
          
