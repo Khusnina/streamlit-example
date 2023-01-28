@@ -498,8 +498,8 @@ if choice == '📝 Summarize':
                {
                   #"Original Content": [Df['Description'][0], Df['Description'][1], Df['Description'][2], Df['Description'][3], Df['Description'][4], Df['Description'][5], Df['Description'][6], Df['Description'][7], Df['Description'][8], Df['Description'][9], Df['Description'][10], Df['Description'][11], Df['Description'][12], Df['Description'][13], Df['Description'][14]],
                   #"Summary": [str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14, str15],
-                  "first column": [1, 2, 3, 4],
-                  "second column": [10, 20, 30, 40],
+                  "first column": [Df['Description'][0], 2, 3, 4],
+                  "second column": [str1, 20, 30, 40],
                }
             )
 
