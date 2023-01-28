@@ -525,7 +525,7 @@ if choice == '📝 Summarize':
          str14 = textwrap.shorten(Df['Description'][13], width=1500, placeholder='.')
          str15 = textwrap.shorten(Df['Description'][14], width=1500, placeholder='.')
          
-         st.write(len(str1))
+         st.write(len(str1.split()))
          # Cache the dataframe so it's only loaded once
          @st.experimental_memo
          def load_data():
