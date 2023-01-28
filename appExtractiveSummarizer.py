@@ -526,7 +526,7 @@ if choice == '📝 Summarize':
 
          # Display the dataframe and allow the user to stretch the dataframe
          # across the full width of the container, based on the checkbox value
-         st.dataframe(df, use_container_width=st.session_state.use_container_width, height=20)
+         st.dataframe(df, use_container_width=st.session_state.use_container_width, use_container_width=False)
          
 if choice == '📊 Result':
    st.info("Result (TXT file)")
