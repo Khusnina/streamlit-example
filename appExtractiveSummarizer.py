@@ -389,15 +389,15 @@ if choice == '📝 Summarize':
 
                            "where've": "where have", "who'll": "who will", "who'll've": "who will have", "who's": "who is", "who've": "who have",
 
-                           "why's": "why is", "why've": "why have", "will've": "will have", "won't": "will not", "won't've": "will not have",
+                           "why's": "why is", "why've": "why have", "will've": "will have", "won't": "will not", "won't've": "will not have", "old old" : "old",
 
-                           "would've": "would have", "wouldn't": "would not", "wouldn't've": "would not have", "y'all": "you all",
+                           "would've": "would have", "wouldn't": "would not", "wouldn't've": "would not have", "y'all": "you all", "g" : "", "possibly possibly" : "possibly",
 
-                           "y'all'd": "you all would","y'all'd've": "you all would have","y'all're": "you all are","y'all've": "you all have",
+                           "y'all'd": "you all would","y'all'd've": "you all would have","y'all're": "you all are","y'all've": "you all have", "n" : "",
 
-                           "you'd": "you would", "you'd've": "you would have", "you'll": "you will", "you'll've": "you will have",
+                           "you'd": "you would", "you'd've": "you would have", "you'll": "you will", "you'll've": "you will have", "l" : "",
 
-                           "you're": "you are", "you've": "you have", "chapter": "", "page" : "", "j k r w l n g" : "", "ab" : "", "j" : ""}
+                           "you're": "you are", "you've": "you have", "chapter": "", "page" : "", "ab" : "", "j" : "", "k" : "", "r" : "", "w" : "",}
          
          def clean_text(text):
             text=text.lower()
