@@ -553,3 +553,4 @@ if choice == '📝 Summarize':
          st.dataframe(df, use_container_width=st.session_state.use_container_width)
          
 if choice == '📊 Statistic':
+   st.write("Result")
