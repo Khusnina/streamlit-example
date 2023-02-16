@@ -326,7 +326,7 @@ if choice == '📝 Summarize':
             return ' '.join(word_list)
          
          rm_stopwords_from_text(raw_text)
-         st.write(raw_text)
+         st.text(raw_text)
          st.success('Word Tokenize')
          sToken = nltk.word_tokenize(raw_text)
          st.write(sToken)
