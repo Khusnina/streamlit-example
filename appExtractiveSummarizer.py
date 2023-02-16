@@ -262,76 +262,131 @@ if choice == '📝 Summarize':
          raw_text = str(Dftxt,"utf-8")
          st.text(raw_text)
       if st.button('Summarize file'):
+         st.info("Results")
+         contraction_mapping = {"ain't": "is not", "aren't": "are not","can't": "cannot", "'cause": "because", "could've": "could have", "couldn't": "could not",
+
+                           "didn't": "did not", "doesn't": "does not", "don't": "do not", "hadn't": "had not", "hasn't": "has not", "haven't": "have not",
+
+                           "he'd": "he would","he'll": "he will", "he's": "he is", "how'd": "how did", "how'd'y": "how do you", "how'll": "how will", "how's": "how is",
+
+                           "I'd": "I would", "I'd've": "I would have", "I'll": "I will", "I'll've": "I will have","I'm": "I am", "I've": "I have", "i'd": "i would",
+
+                           "i'd've": "i would have", "i'll": "i will",  "i'll've": "i will have","i'm": "i am", "i've": "i have", "isn't": "is not", "it'd": "it would",
+
+                           "it'd've": "it would have", "it'll": "it will", "it'll've": "it will have","it's": "it is", "let's": "let us", "ma'am": "madam",
+
+                           "mayn't": "may not", "might've": "might have","mightn't": "might not","mightn't've": "might not have", "must've": "must have",
+                           
+                            "mustn't": "must not", "mustn't've": "must not have", "needn't": "need not", "needn't've": "need not have","o'clock": "of the clock",
+
+                           "oughtn't": "ought not", "oughtn't've": "ought not have", "shan't": "shall not", "sha'n't": "shall not", "shan't've": "shall not have",
+
+                           "she'd": "she would", "she'd've": "she would have", "she'll": "she will", "she'll've": "she will have", "she's": "she is",
+
+                           "should've": "should have", "shouldn't": "should not", "shouldn't've": "should not have", "so've": "so have","so's": "so as",
+
+                           "this's": "this is","that'd": "that would", "that'd've": "that would have", "that's": "that is", "there'd": "there would",
+
+                           "there'd've": "there would have", "there's": "there is", "here's": "here is","they'd": "they would", "they'd've": "they would have",
+
+                           "they'll": "they will", "they'll've": "they will have", "they're": "they are", "they've": "they have", "to've": "to have",
+
+                           "wasn't": "was not", "we'd": "we would", "we'd've": "we would have", "we'll": "we will", "we'll've": "we will have", "we're": "we are",
+                           
+                            "we've": "we have", "weren't": "were not", "what'll": "what will", "what'll've": "what will have", "what're": "what are",
+
+                           "what's": "what is", "what've": "what have", "when's": "when is", "when've": "when have", "where'd": "where did", "where's": "where is",
+
+                           "where've": "where have", "who'll": "who will", "who'll've": "who will have", "who's": "who is", "who've": "who have",
+
+                           "why's": "why is", "why've": "why have", "will've": "will have", "won't": "will not", "won't've": "will not have", "old old" : "old",
+
+                           "would've": "would have", "wouldn't": "would not", "wouldn't've": "would not have", "y'all": "you all", "g" : "", "possibly possibly" : "possibly",
+
+                           "y'all'd": "you all would","y'all'd've": "you all would have","y'all're": "you all are","y'all've": "you all have", "n" : "",
+
+                           "you'd": "you would", "you'd've": "you would have", "you'll": "you will", "you'll've": "you will have", "l" : "",
+
+                           "you're": "you are", "you've": "you have", "chapter": "", "page" : "", "ab" : "", "j" : "", "k" : "", "r" : "", "w" : "",}
+         
+         def clean_text(text):
+            text=text.lower()
+            text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
+            text=re.sub(r'\(.*\)',"",text)
+            text=re.sub("'s","",text)
+            text=re.sub('"','',text)
+            text=' '.join([i for i in text.split() if i.isalpha()])
+            text=re.sub('[^a-zA-Z]'," ",text)
+            return text
+         
+         stop_words = stopwords.words('english')
+
+         def preprocess(text):
+            text = text.lower() # lowercase
+            text = text.split() # convert have'nt -> have not
+            for i in range(len(text)):
+               word = text[i]
+               if word in contraction_mapping:
+                  text[i] = contraction_mapping[word]
+            text = " ".join(text)
+            text = text.split()
+            newtext = []
+            for word in text:
+               if word not in stop_words:
+                  newtext.append(word)
+            text = " ".join(newtext)
+            text = text.replace("'s",'') # convert your's -> your
+            text = re.sub(r'\(.*\)','',text) # remove (words)
+            text = re.sub(r'[^a-zA-Z0-9. ]','',text) # remove punctuations
+            text = re.sub(r'\.',' . ',text)
+            return text
+         
+         st.success('Cleaned', icon="✅")
+         raw_text = raw_text.apply(clean_text)
+         raw_text = raw_text.apply(preprocess)
+         st.text(raw_text)
+         
+         stop = stopwords.words('english')
+         Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
          st.success('Stopwords', icon="✅")
-         stopWords = list(stopwords.words("english"))+list(punctuation)+list([0,1,2,3,4,5,6,7,8,9])
-         stopWords[15:25]
+         st.write("List of stopwords:")
+         stopwords = nltk.corpus.stopwords.words('english')
+         st.write(stopwords[:10])
          
          st.success('Word Tokenize', icon="✅")
-         words = word_tokenize(raw_text)
-         words[15:25]
+         for i in range(len(Df)):
+            sToken = nltk.word_tokenize(Df['Description'][i])
+            st.write(i+1, "Description")
+            st.write(sToken)
          
-         st.success('Word Tokenize', icon="✅")
-         raw_text = raw_text.str.replace('\n\n\n\n', ' ')
-         raw_text = raw_text.str.replace('\n\n', ' ')
-         raw_text = raw_text.str.replace('\n', ' ')
-         raw_text = raw_text.str.replace('/', ' ')
-         raw_text = raw_text.str.replace('    ', ' ')
-         raw_text = raw_text.str.replace('   ', ' ')
-         raw_text = raw_text.replace('? ', '. ')
-         raw_text = raw_text.replace('*', '')
-         raw_text = raw_text.replace('\r', '')
-         raw_text = raw_text.replace('Page|', '')
+         train_x, test_x, train_y, test_y = train_test_split(Df['Title'], Df['Description'], test_size=0.3, random_state=20)
+         t_tokenizer = Tokenizer()
+         t_tokenizer.fit_on_texts(list(train_x))
+
+         thresh = 4
+         count = 0
+         total_count = 0
+         frequency = 0
+         total_frequency = 0
+
+         for key, value in t_tokenizer.word_counts.items():
+            total_count += 1
+            total_frequency += value
+            if value < thresh:
+               count += 1
+               frequency += value
          
-            
-         st.success('Frequent Table', icon="✅")
-         freqTable={}
-         for word in words: 
-            word = word.lower() 
-            if word not in stopWords:
-               if word in freqTable: 
-                  freqTable[word] += 1
-               else: 
-                  freqTable[word] = 1
-         st.write(freqTable)
-         #st.write("Items")
-         #st.write(freqTable.items())
-         #st.write(sorted(freqTable.items(), key = lambda x: x[1]))
+         st.write("% of rare words in vocabulary: ", (count/total_count)*100.0)
+         st.write("Total Coverage of rare words: ", (frequency/total_frequency)*100.0)
+         s_max_features = total_count-count
+         st.write("Summary Vocab: ", s_max_features)
          
-         st.success('Sent Tokenize', icon="✅")
-         sentences = sent_tokenize(raw_text) 
-         for sen in sentences:
-            st.write(sen,"\n")
-                  
-         st.success('Sentence Weight', icon="✅")
-         sentence_weight = dict() 
-         for sentence in sentences: 
-            # print(sentence,'\n')
-            for word, freq in freqTable.items():
-            # print('\n' , word, freq)
-               if word in sentence.lower(): 
-                  # print('sentence_weight    ',sentence_weight)
-                  if sentence in sentence_weight:     
-                     sentence_weight[sentence] += freq 
-                  else: 
-                     sentence_weight[sentence] = freq 
-                  #sentence_weight
-               sumValues = 0
-               for sentence in sentence_weight: 
-                  sumValues += sentence_weight[sentence] 
-               #sumValues 
-               # Average value of a sentence from the original text 
-               average = int(sumValues / len(sentence_weight)) 
-               #st.write(average,sumValues,len(sentence_weight),sep='\n\n')
-               #average
-               # Storing sentences into our summary. 
-               summary = '' 
-               counter=0
-               for sentence in sentences: 
-                  if (sentence in sentence_weight) and (sentence_weight[sentence] > (1.25* average)): 
-                     summary += " " + sentence 
-                     counter+=1
-               #st.write(counter,summary,sep='\n\n')
-     
+         countOfWords = len(raw_text.split())
+         st.write("Count of Words for cleaned: ", countOfWords)
+         
+         strg = textwrap.shorten(raw_text, width=1500, placeholder='.')
+         st.write("Summary: \n", strg)
+         st.write("Count of Words for Summary: ", len(str1.split()))
          
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
    if uploaded_file is not None:
