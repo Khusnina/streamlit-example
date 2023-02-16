@@ -354,12 +354,10 @@ if choice == '📝 Summarize':
          st.write(stopwords[:10])
          
          st.success('Word Tokenize', icon="✅")
-         for i in range(len(Df)):
-            sToken = nltk.word_tokenize(Df['Description'][i])
-            st.write(i+1, "Description")
-            st.write(sToken)
+         sToken = nltk.word_tokenize(raw_text)
+         st.write(sToken)
          
-         train_x, test_x, train_y, test_y = train_test_split(Df['Title'], Df['Description'], test_size=0.3, random_state=20)
+         train_x, test_x, train_y, test_y = train_test_split(raw_text, test_size=0.3, random_state=20)
          t_tokenizer = Tokenizer()
          t_tokenizer.fit_on_texts(list(train_x))
 
@@ -384,8 +382,9 @@ if choice == '📝 Summarize':
          countOfWords = len(raw_text.split())
          st.write("Count of Words for cleaned: ", countOfWords)
          
+         st.success('Summary', icon="✅")
          strg = textwrap.shorten(raw_text, width=1500, placeholder='.')
-         st.write("Summary: \n", strg)
+         st.write(strg)
          st.write("Count of Words for Summary: ", len(str1.split()))
          
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
