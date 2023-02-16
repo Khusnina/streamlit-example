@@ -324,9 +324,9 @@ if choice == '📝 Summarize':
          raw_text = " ".join(raw_text)
          raw_text = raw_text.split()
          newtext = []
-         for word in raw_text:
-            if word not in stop_words:
-               newtext.append(word)
+         #for word in raw_text:
+            #if word not in stop_words:
+               #newtext.append(word)
          raw_text = " ".join(newtext)
          raw_text = raw_text.replace("'s",'') # convert your's -> your
          raw_text = re.sub(r'\(.*\)','',raw_text) # remove (words)
