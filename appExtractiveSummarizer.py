@@ -312,8 +312,28 @@ if choice == '📝 Summarize':
          raw_text=raw_text.lower()
          raw_text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in raw_text.split()])
          raw_text=re.sub(r'\(.*\)',"",raw_text)
+         raw_text=re.sub("'s","",raw_text)
+         raw_text=re.sub('"','',raw_text)
+         raw_text=' '.join([i for i in raw_text.split() if i.isalpha()])
+         raw_text=re.sub('[^a-zA-Z]'," ",raw_text)
+         raw_text = raw_text.split() # convert have'nt -> have not
+         for i in range(len(raw_text)):
+            word = raw_text[i]
+            if word in contraction_mapping:
+               raw_text[i] = contraction_mapping[word]
+         raw_text = " ".join(raw_text)
+         raw_text = raw_text.split()
+         newtext = []
+         for word in raw_text:
+            if word not in stop_words:
+               newtext.append(word)
+         raw_text = " ".join(newtext)
+         raw_text = raw_text.replace("'s",'') # convert your's -> your
+         raw_text = re.sub(r'\(.*\)','',raw_text) # remove (words)
+         raw_text = re.sub(r'[^a-zA-Z0-9. ]','',raw_text) # remove punctuations
+         raw_text = re.sub(r'\.',' . ',raw_text)
          
-         st.text(raw_text)
+         st.write(raw_text)
             
          def clean_text(text):
             text=text.lower()
@@ -347,10 +367,6 @@ if choice == '📝 Summarize':
             text = re.sub(r'\.',' . ',text)
             return text
          
-         st.success('Cleaned', icon="✅")
-         raw_text = raw_text.apply(clean_text)
-         raw_text = raw_text.apply(preprocess)
-         st.text(raw_text)
          
          stop = stopwords.words('english')
          Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
