@@ -309,7 +309,17 @@ if choice == '📝 Summarize':
 
                            "you're": "you are", "you've": "you have", "chapter": "", "page" : "", "ab" : "", "j" : "", "k" : "", "r" : "", "w" : "",}
          
-         raw_text=raw_text.lower()
+         raw_text = raw_text.str.replace('\n\n\n\n', ' ')
+         raw_text = raw_text.str.replace('\n\n', ' ')
+         raw_text = raw_text.str.replace('\n', ' ')
+         raw_text = raw_text.str.replace('/', ' ')
+         raw_text = raw_text.str.replace('    ', ' ')
+         raw_text = raw_text.str.replace('   ', ' ')
+         raw_text = raw_text.replace('? ', '. ')
+         raw_text = raw_text.replace('*', '')
+         raw_text = raw_text.replace('\r', '')
+         raw_text = raw_text.replace('Page|', '')
+         raw_text = raw_text.lower()
          raw_text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in raw_text.split()])
          raw_text=re.sub(r'\(.*\)',"",raw_text)
          raw_text=re.sub("'s","",raw_text)
