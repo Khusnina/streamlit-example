@@ -334,9 +334,13 @@ if choice == '📝 Summarize':
          st.write("List of stopwords:")
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:10])
-         
          countOfWordsForCleaned = len(raw_text.split())
          st.write("Count of Words For Cleaned: ", countOfWordsForCleaned)
+         
+         str00 = textwrap.shorten(raw_text, width=1500, placeholder='.')
+         st.write(str00)
+         countOfWordsForSummary = len(str1.split())
+         st.write("Count of Words For Summary: ", countOfWordsForSummary)
          
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
    if uploaded_file is not None:
