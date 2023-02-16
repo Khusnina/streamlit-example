@@ -325,6 +325,9 @@ if choice == '📝 Summarize':
          
          rm_stopwords_from_text(raw_text)
          st.write(raw_text)
+         sToken = nltk.word_tokenize(raw_text)
+         st.write(sToken)
+         st.write(stopwords[:10])
          
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
    if uploaded_file is not None:
