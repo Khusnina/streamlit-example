@@ -325,8 +325,12 @@ if choice == '📝 Summarize':
          
          rm_stopwords_from_text(raw_text)
          st.write(raw_text)
+         st.success('Word Tokenize')
          sToken = nltk.word_tokenize(raw_text)
          st.write(sToken)
+         st.success('Stopwords')
+         st.write("List of stopwords:")
+         stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:10])
          
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
@@ -452,12 +456,12 @@ if choice == '📝 Summarize':
          
          stop = stopwords.words('english')
          Df['Description']= Df['Description'].apply(lambda x: " ".join(x for x in x.split() if x not in stop))
-         st.success('Stopwords', icon="✅")
+         st.success('Stopwords')
          st.write("List of stopwords:")
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:10])
          
-         st.success('Word Tokenize', icon="✅")
+         st.success('Word Tokenize')
          for i in range(len(Df)):
             sToken = nltk.word_tokenize(Df['Description'][i])
             st.write(i+1, "Description")
