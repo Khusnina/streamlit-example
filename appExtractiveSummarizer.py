@@ -25,6 +25,7 @@ from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 from nltk.cluster.util import cosine_distance
 import networkx as nx
+from heapq import nlargest
 import neattext.functions as nfx
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
@@ -263,161 +264,48 @@ if choice == '📝 Summarize':
          st.text(raw_text)
       if st.button('Summarize file'):
          st.info("Results")
-         contraction_mapping = {"ain't": "is not", "aren't": "are not","can't": "cannot", "'cause": "because", "could've": "could have", "couldn't": "could not",
-
-                           "didn't": "did not", "doesn't": "does not", "don't": "do not", "hadn't": "had not", "hasn't": "has not", "haven't": "have not",
-
-                           "he'd": "he would","he'll": "he will", "he's": "he is", "how'd": "how did", "how'd'y": "how do you", "how'll": "how will", "how's": "how is",
-
-                           "I'd": "I would", "I'd've": "I would have", "I'll": "I will", "I'll've": "I will have","I'm": "I am", "I've": "I have", "i'd": "i would",
-
-                           "i'd've": "i would have", "i'll": "i will",  "i'll've": "i will have","i'm": "i am", "i've": "i have", "isn't": "is not", "it'd": "it would",
-
-                           "it'd've": "it would have", "it'll": "it will", "it'll've": "it will have","it's": "it is", "let's": "let us", "ma'am": "madam",
-
-                           "mayn't": "may not", "might've": "might have","mightn't": "might not","mightn't've": "might not have", "must've": "must have",
-                           
-                            "mustn't": "must not", "mustn't've": "must not have", "needn't": "need not", "needn't've": "need not have","o'clock": "of the clock",
-
-                           "oughtn't": "ought not", "oughtn't've": "ought not have", "shan't": "shall not", "sha'n't": "shall not", "shan't've": "shall not have",
-
-                           "she'd": "she would", "she'd've": "she would have", "she'll": "she will", "she'll've": "she will have", "she's": "she is",
-
-                           "should've": "should have", "shouldn't": "should not", "shouldn't've": "should not have", "so've": "so have","so's": "so as",
-
-                           "this's": "this is","that'd": "that would", "that'd've": "that would have", "that's": "that is", "there'd": "there would",
-
-                           "there'd've": "there would have", "there's": "there is", "here's": "here is","they'd": "they would", "they'd've": "they would have",
-
-                           "they'll": "they will", "they'll've": "they will have", "they're": "they are", "they've": "they have", "to've": "to have",
-
-                           "wasn't": "was not", "we'd": "we would", "we'd've": "we would have", "we'll": "we will", "we'll've": "we will have", "we're": "we are",
-                           
-                            "we've": "we have", "weren't": "were not", "what'll": "what will", "what'll've": "what will have", "what're": "what are",
-
-                           "what's": "what is", "what've": "what have", "when's": "when is", "when've": "when have", "where'd": "where did", "where's": "where is",
-
-                           "where've": "where have", "who'll": "who will", "who'll've": "who will have", "who's": "who is", "who've": "who have",
-
-                           "why's": "why is", "why've": "why have", "will've": "will have", "won't": "will not", "won't've": "will not have", "old old" : "old",
-
-                           "would've": "would have", "wouldn't": "would not", "wouldn't've": "would not have", "y'all": "you all", "g" : "", "possibly possibly" : "possibly",
-
-                           "y'all'd": "you all would","y'all'd've": "you all would have","y'all're": "you all are","y'all've": "you all have", "n" : "",
-
-                           "you'd": "you would", "you'd've": "you would have", "you'll": "you will", "you'll've": "you will have", "l" : "",
-
-                           "you're": "you are", "you've": "you have", "chapter": "", "page" : "", "ab" : "", "j" : "", "k" : "", "r" : "", "w" : "",}
-         
-         raw_text = raw_text.str.replace('\n\n\n\n', ' ')
-         raw_text = raw_text.str.replace('\n\n', ' ')
-         raw_text = raw_text.str.replace('\n', ' ')
-         raw_text = raw_text.str.replace('/', ' ')
-         raw_text = raw_text.str.replace('    ', ' ')
-         raw_text = raw_text.str.replace('   ', ' ')
-         raw_text = raw_text.replace('? ', '. ')
-         raw_text = raw_text.replace('*', '')
-         raw_text = raw_text.replace('\r', '')
-         raw_text = raw_text.replace('Page|', '')
-         raw_text = raw_text.lower()
-         raw_text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in raw_text.split()])
-         raw_text=re.sub(r'\(.*\)',"",raw_text)
-         raw_text=re.sub("'s","",raw_text)
-         raw_text=re.sub('"','',raw_text)
-         raw_text=' '.join([i for i in raw_text.split() if i.isalpha()])
-         raw_text=re.sub('[^a-zA-Z]'," ",raw_text)
-         raw_text = raw_text.split() # convert have'nt -> have not
-         for i in range(len(raw_text)):
-            word = raw_text[i]
-            if word in contraction_mapping:
-               raw_text[i] = contraction_mapping[word]
-         raw_text = " ".join(raw_text)
-         raw_text = raw_text.split()
-         newtext = []
-         #for word in raw_text:
-            #if word not in stop_words:
-               #newtext.append(word)
-         raw_text = " ".join(newtext)
-         raw_text = raw_text.replace("'s",'') # convert your's -> your
-         raw_text = re.sub(r'\(.*\)','',raw_text) # remove (words)
-         raw_text = re.sub(r'[^a-zA-Z0-9. ]','',raw_text) # remove punctuations
-         raw_text = re.sub(r'\.',' . ',raw_text)
-         
-         st.write(raw_text)
-            
-         def clean_text(text):
-            text=text.lower()
-            text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
-            text=re.sub(r'\(.*\)',"",text)
-            text=re.sub("'s","",text)
-            text=re.sub('"','',text)
-            text=' '.join([i for i in text.split() if i.isalpha()])
-            text=re.sub('[^a-zA-Z]'," ",text)
-            return text
-         
-         stop_words = stopwords.words('english')
-
-         def preprocess(text):
-            text = text.lower() # lowercase
-            text = text.split() # convert have'nt -> have not
-            for i in range(len(text)):
-               word = text[i]
-               if word in contraction_mapping:
-                  text[i] = contraction_mapping[word]
-            text = " ".join(text)
-            text = text.split()
-            newtext = []
-            for word in text:
-               if word not in stop_words:
-                  newtext.append(word)
-            text = " ".join(newtext)
-            text = text.replace("'s",'') # convert your's -> your
-            text = re.sub(r'\(.*\)','',text) # remove (words)
-            text = re.sub(r'[^a-zA-Z0-9. ]','',text) # remove punctuations
-            text = re.sub(r'\.',' . ',text)
-            return text
-         
-         
-         stop = stopwords.words('english')
-         raw_text = raw_text.apply(lambda x: " ".join(x for x in x.split() if x not in stop))
-         st.success('Stopwords', icon="✅")
-         st.write("List of stopwords:")
-         stopwords = nltk.corpus.stopwords.words('english')
-         st.write(stopwords[:10])
-         
-         st.success('Word Tokenize', icon="✅")
-         sToken = nltk.word_tokenize(raw_text)
-         st.write(sToken)
-         
-         train_x, test_x, train_y, test_y = train_test_split(raw_text, test_size=0.3, random_state=20)
-         t_tokenizer = Tokenizer()
-         t_tokenizer.fit_on_texts(list(train_x))
-
-         thresh = 4
-         count = 0
-         total_count = 0
-         frequency = 0
-         total_frequency = 0
-
-         for key, value in t_tokenizer.word_counts.items():
-            total_count += 1
-            total_frequency += value
-            if value < thresh:
-               count += 1
-               frequency += value
-         
-         st.write("% of rare words in vocabulary: ", (count/total_count)*100.0)
-         st.write("Total Coverage of rare words: ", (frequency/total_frequency)*100.0)
-         s_max_features = total_count-count
-         st.write("Summary Vocab: ", s_max_features)
-         
-         countOfWords = len(raw_text.split())
-         st.write("Count of Words for cleaned: ", countOfWords)
-         
-         st.success('Summary', icon="✅")
-         strg = textwrap.shorten(raw_text, width=1500, placeholder='.')
-         st.write(strg)
-         st.write("Count of Words for Summary: ", len(str1.split()))
+         stopwords = list(STOP_WORDS)
+         stopwords
+         nlp = spacy.load('en_core_web_sm')
+         doc = nlp(raw_text)
+         tokens = [token.text for token in doc]
+         st.write(doc)
+         punctuation+='/n'
+         punctuation
+         word_freq={}
+         for word in doc:
+            if word.text.lower() not in stopwords:
+               if word.text.lower() not in punctuation:
+                  if word.text not in word_freq.keys():
+                     word_freq[word.text]=1
+                  else:
+                     word_freq[word.text]+=1
+         st.write(word_freq)
+         max_freq=max(word_freq.values())
+         max_freq
+         for word in word_freq.keys():
+            word_freq[word]=word_freq[word]/max_freq
+         st.write(word_freq)
+         sentence_tok=[sent for sent in doc.sents]
+         st.write(sentence_tok)
+         sent_scores={}
+         for sent in sentence_tok:
+            for word in sent:
+               if word.text.lower() in word_freq.keys():
+                  if sent not in sent_scores.keys():
+                     sent_scores[sent]=word_freq[word.text.lower()]
+                  else:
+                     sent_scores[sent]+=word_freq[word.text.lower()]
+         select_len=int(len(sentence_tok)*0.3)
+         select_len
+         summary=nlargest(select_len,sent_scores,key=sent_scores.get)
+         summary       
+         final_sum=[word.text for word in summary]
+         final_sum
+         summary=' '.join(final_sum)
+         st.write(summary)
+         len(text)
+         len(summary)     
          
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
    if uploaded_file is not None:
