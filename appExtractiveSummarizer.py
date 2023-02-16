@@ -327,6 +327,8 @@ if choice == '📝 Summarize':
          
          rm_stopwords_from_text(raw_text)
          st.text(raw_text)
+         countOfWordsForCleaned = len(raw_text.split())
+         st.write("Count of Words For Cleaned: ", countOfWordsForCleaned)
          st.success('Word Tokenize')
          sToken = nltk.word_tokenize(raw_text)
          st.write(sToken)
@@ -334,8 +336,6 @@ if choice == '📝 Summarize':
          st.write("List of stopwords:")
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:10])
-         countOfWordsForCleaned = len(raw_text.split())
-         st.write("Count of Words For Cleaned: ", countOfWordsForCleaned)
          
          str00 = textwrap.shorten(raw_text, width=1500, placeholder='.')
          st.write(str00)
