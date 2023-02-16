@@ -316,8 +316,14 @@ if choice == '📝 Summarize':
          raw_text=re.sub('"','',raw_text)
          raw_text=' '.join([i for i in raw_text.split() if i.isalpha()])
          raw_text=re.sub('[^a-zA-Z]'," ",raw_text)
-         
          st.write(raw_text)
+         
+         stop = stopwords.words('english')
+         raw_text = raw_text.apply(lambda x: " ".join(x for x in x.split() if x not in stop))
+         st.success('Stopwords', icon="✅")
+         st.write("List of stopwords:")
+         stopwords = nltk.corpus.stopwords.words('english')
+         st.write(stopwords[:10])
          
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
    if uploaded_file is not None:
