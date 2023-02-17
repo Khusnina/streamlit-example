@@ -340,7 +340,7 @@ if choice == '📝 Summarize':
          
          str00 = textwrap.shorten(raw_text, width=1500, placeholder='.')
          st.write(str00)
-         countOfWordsForSummary = len(str1.split())
+         countOfWordsForSummary = len(str00.split())
          st.write("Count of Words For Summary: ", countOfWordsForSummary)
          
    uploaded_file = st.file_uploader("Choose a file",type=["csv"])
