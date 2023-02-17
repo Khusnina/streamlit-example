@@ -326,6 +326,7 @@ if choice == '📝 Summarize':
             return ' '.join(word_list)
          
          rm_stopwords_from_text(raw_text)
+         st.success('Cleaned Text')
          st.text(raw_text)
          countOfWordsForCleaned = len(raw_text.split())
          st.write("Count of Words For Cleaned: ", countOfWordsForCleaned)
@@ -458,7 +459,7 @@ if choice == '📝 Summarize':
             text = re.sub(r'\.',' . ',text)
             return text
          
-         st.success('Cleaned', icon="✅")
+         st.success('Cleaned Description')
          Df['Description']=Df['Description'].apply(clean_text)
          Df['Description']=Df['Description'].apply(preprocess)
          st.dataframe(Df)
