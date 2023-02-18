@@ -563,6 +563,3 @@ if choice == '📝 Summarize':
          # Display the dataframe and allow the user to stretch the dataframe
          # across the full width of the container, based on the checkbox value
          st.dataframe(df, use_container_width=st.session_state.use_container_width)
-         
-if choice == '📊 Statistic':
-   st.write("Result")
