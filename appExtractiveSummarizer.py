@@ -343,12 +343,13 @@ if choice == '📝 Summarize':
             word_frequencies[word] = word_frequencies[word] / maximum_frequency
             
          sentence_scores = {}
-         for word in nltk.word_tokenize(raw_text):
-            if word in word_frequencies and len(raw_text.split(' ')) < 30:
-               if sentence not in sentence_scores:
-                  sentence_scores[sentence] = word_frequencies[word]
-               else:
-                  sentence_scores[sentence] += word_frequencies[word]
+         for sentence in raw_text:
+            for word in nltk.word_tokenize(sentence):
+               if word in word_frequencies and len(sentence.split(' ')) < 30:
+                  if sentence not in sentence_scores:
+                     sentence_scores[sentence] = word_frequencies[word]
+                  else:
+                     sentence_scores[sentence] += word_frequencies[word]
          st.success('Word Frequency')
          word_frequencies
          st.success('Sentence Score')
