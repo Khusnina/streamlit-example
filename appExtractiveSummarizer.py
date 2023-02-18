@@ -334,11 +334,10 @@ if choice == '📝 Summarize':
          
          word_frequencies = {}
          for word in nltk.word_tokenize(raw_text):
-            if word not in stopwords:
-               if word not in word_frequencies:
-                  word_frequencies[word] = 1
-               else:
-                  word_frequencies[word] += 1
+            if word not in word_frequencies:
+               word_frequencies[word] = 1
+            else:
+               word_frequencies[word] += 1
          maximum_frequency = max(word_frequencies.values())
          for word in word_frequencies:
             word_frequencies[word] = word_frequencies[word] / maximum_frequency
