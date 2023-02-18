@@ -459,7 +459,6 @@ if choice == '📝 Summarize':
             text = re.sub(r'\(.*\)','',text) # remove (words)
             text = re.sub(r'\(*\)','',text) # remove (words)
             #text = re.sub(r'[^a-zA-Z0-9 ]','',text) # remove punctuations
-            text = re.sub(r'[^a-zA-Z]','',text) # remove punctuations
             text = re.sub(r'\.',' . ',text)
             return text
          
