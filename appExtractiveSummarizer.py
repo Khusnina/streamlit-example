@@ -430,7 +430,8 @@ if choice == '📝 Summarize':
          def clean_text(text):
             text=text.lower()
             text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
-            text=re.sub(r'\(.*\)',"",text)
+            #text=re.sub(r'\(.*\)',"",text)
+            text=re.sub(r'\(*\)',"",text)
             text=re.sub("'s","",text)
             text=re.sub('"','',text)
             text=' '.join([i for i in text.split() if i.isalpha()])
@@ -454,8 +455,10 @@ if choice == '📝 Summarize':
                   newtext.append(word)
             text = " ".join(newtext)
             text = text.replace("'s",'') # convert your's -> your
-            text = re.sub(r'\(.*\)','',text) # remove (words)
+            #text = re.sub(r'\(.*\)','',text) # remove (words)
+            text = re.sub(r'\(*\)','',text) # remove (words)
             text = re.sub(r'[^a-zA-Z0-9. ]','',text) # remove punctuations
+            #text = re.sub(r'\.',' . ',text)
             text = re.sub(r'\.',' . ',text)
             return text
          
