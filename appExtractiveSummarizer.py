@@ -457,11 +457,10 @@ if choice == '📝 Summarize':
             text = " ".join(newtext)
             text = text.replace("'s",'') # convert your's -> your
             text = re.sub(r'\(.*\)','',text) # remove (words)
-            text = re.sub(r'\(*\)','',text) # remove (words)
             #text = re.sub(r'[^a-zA-Z0-9 ]','',text) # remove punctuations
-            punctuation = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+            punctuation = '''!()-[]{};:'"\,<>/?@#$%^&*_~'''
             final_string = ''
-            for ch in string:
+            for ch in text:
                if ch not in punctuation:
                   final_string = final_string + ch
             text = re.sub(r'\.',' . ',text)
