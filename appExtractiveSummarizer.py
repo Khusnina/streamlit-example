@@ -344,7 +344,7 @@ if choice == '📝 Summarize':
             
          sentence_scores = {}
          for word in nltk.word_tokenize(raw_text):
-            if word in word_frequencies and len(sentence.split(' ')) < 30:
+            if word in word_frequencies and len(raw_text.split(' ')) < 30:
                if sentence not in sentence_scores:
                   sentence_scores[sentence] = word_frequencies[word]
                else:
