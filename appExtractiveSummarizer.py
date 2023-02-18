@@ -250,7 +250,7 @@ if choice == '📝 Summarize':
                      word_freq[word.text]=1
                   else:
                      word_freq[word.text]+=1
-            st.write(word_freq)
+         st.write(word_freq)
      
       
    uploaded_txt = st.file_uploader("Choose a file",type=["txt"])
@@ -331,6 +331,28 @@ if choice == '📝 Summarize':
          st.text(raw_text)
          countOfWordsForCleaned = len(raw_text.split())
          st.write("Count of Words For Cleaned: ", countOfWordsForCleaned)
+         
+         word_frequencies = {}
+         for word in nltk.word_tokenize(clean_text):
+            if word not in stopwords:
+               if word not in word_frequencies:
+                  word_frequencies[word] = 1
+               else:
+                  word_frequencies[word] += 1
+         maximum_frequency = max(word_frequencies.values())
+         for word in word_frequencies:
+            word_frequencies[word] = word_frequencies[word] / maximum_frequency
+            
+         sentence_scores = {}
+         for sentence in sentence_list:
+            for word in nltk.word_tokenize(sentence):
+               if word in word_frequencies and len(sentence.split(' ')) < 30:
+                  if sentence not in sentence_scores:
+                     sentence_scores[sentence] = word_frequencies[word]
+                  else:
+                     sentence_scores[sentence] += word_frequencies[word]
+         sentence_scores
+         
          st.success('Word Tokenize')
          sToken = nltk.word_tokenize(raw_text)
          st.write(sToken)
@@ -427,6 +449,16 @@ if choice == '📝 Summarize':
                            "you'd": "you would", "you'd've": "you would have", "you'll": "you will", "you'll've": "you will have", "l" : "",
 
                            "you're": "you are", "you've": "you have", "chapter": "", "page" : "", "ab" : "", "j" : "", "k" : "", "r" : "", "w" : "",}
+         
+         def clean_text(text):
+            text = text.lower()
+            text = ' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
+            text=re.sub(r'\(.*\)',"",text)
+            text=re.sub("'s","",text)
+            text=re.sub('"','',text)
+            text=' '.join([i for i in text.split() if i.isalpha()])
+            text=re.sub('[^a-zA-Z]'," ",text)
+            return text
          
          stop_words = stopwords.words('english')
 
