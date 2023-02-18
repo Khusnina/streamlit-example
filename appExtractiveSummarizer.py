@@ -351,6 +351,9 @@ if choice == '📝 Summarize':
                      sentence_scores[sentence] = word_frequencies[word]
                   else:
                      sentence_scores[sentence] += word_frequencies[word]
+         st.success('Word Frequency')
+         word_frequencies
+         st.success('Sentence Score')
          sentence_scores
          
          st.success('Word Tokenize')
