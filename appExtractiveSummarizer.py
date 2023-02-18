@@ -427,18 +427,7 @@ if choice == '📝 Summarize':
                            "you'd": "you would", "you'd've": "you would have", "you'll": "you will", "you'll've": "you will have", "l" : "",
 
                            "you're": "you are", "you've": "you have", "chapter": "", "page" : "", "ab" : "", "j" : "", "k" : "", "r" : "", "w" : "",}
-         """
-         def clean_text(text):
-            text=text.lower()
-            text=' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
-            #text=re.sub(r'\(.*\)',"",text)
-            text=re.sub(r'\(*\)',"",text)
-            text=re.sub("'s","",text)
-            text=re.sub('"','',text)
-            text=' '.join([i for i in text.split() if i.isalpha()])
-            text=re.sub('[^a-zA-Z]'," ",text)
-            return text
-         """
+         
          stop_words = stopwords.words('english')
 
          def preprocess(text):
@@ -457,7 +446,7 @@ if choice == '📝 Summarize':
             text = " ".join(newtext)
             text = text.replace("'s",'') # convert your's -> your
             text = re.sub(r'\(.*\)','',text) # remove (words)
-            text = re.sub(r'[^a-zA-Z. ]','',text) # remove punctuations
+            text = re.sub(r'[^a-zA-Z ]','',text) # remove punctuations
             punctuation = '''!()-[]{};:'"\,<>/?@#$%^&*_~'''
             final_string = ''
             for ch in text:
