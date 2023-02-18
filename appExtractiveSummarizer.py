@@ -318,7 +318,7 @@ if choice == '📝 Summarize':
          raw_text=re.sub("'s","",raw_text)
          raw_text=re.sub('"','',raw_text)
          raw_text=' '.join([i for i in raw_text.split() if i.isalpha()])
-         raw_text=re.sub('[^a-zA-Z]'," ",raw_text)
+         raw_text=re.sub('[^a-zA-Z.]'," ",raw_text)
          
          def rm_stopwords_from_text(text):
             _stopwords = stopwords.words('english')
@@ -333,7 +333,7 @@ if choice == '📝 Summarize':
          st.write("Count of Words For Cleaned: ", countOfWordsForCleaned)
          
          word_frequencies = {}
-         for word in nltk.word_tokenize(clean_text):
+         for word in nltk.word_tokenize(raw_text):
             if word not in stopwords:
                if word not in word_frequencies:
                   word_frequencies[word] = 1
@@ -345,7 +345,7 @@ if choice == '📝 Summarize':
             
          sentence_scores = {}
          for sentence in sentence_list:
-            for word in nltk.word_tokenize(sentence):
+            for word in nltk.word_tokenize(raw_text):
                if word in word_frequencies and len(sentence.split(' ')) < 30:
                   if sentence not in sentence_scores:
                      sentence_scores[sentence] = word_frequencies[word]
