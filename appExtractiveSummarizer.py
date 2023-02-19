@@ -299,6 +299,29 @@ if choice == '📝 Summarize':
          countOfWordsForCleaned = len(text.split())
          st.write("Count of Words For Cleaned: ", countOfWordsForCleaned)
          
+         word_frequencies = {}
+         for word in nltk.word_tokenize(text):
+            if word not in word_frequencies:
+               word_frequencies[word] = 1
+            else:
+               word_frequencies[word] += 1
+         maximum_frequency = max(word_frequencies.values())
+         for word in word_frequencies:
+            word_frequencies[word] = word_frequencies[word] / maximum_frequency
+            
+         sentence_scores = {}
+         for sentence in text:
+            for word in nltk.word_tokenize(sentence):
+               if word in word_frequencies and len(sentence.split(' ')) < 6000:
+                  if sentence not in sentence_scores:
+                     sentence_scores[sentence] = word_frequencies[word]
+                  else:
+                     sentence_scores[sentence] += word_frequencies[word]
+         st.success('Word Frequency')
+         word_frequencies
+         st.success('Sentence Score')
+         sentence_scores
+         
      
    uploaded_txt = st.file_uploader("Choose a file",type=["txt"])
    if uploaded_txt is not None:
