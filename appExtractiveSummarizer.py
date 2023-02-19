@@ -236,7 +236,6 @@ if choice == '📝 Summarize':
          st.write(text)
          stopwords = list(STOP_WORDS)
          stopwords
-         nlp = spacy.load('en_core_web_sm')
          doc = nlp(text)
          tokens = [token.text for token in doc]
          st.write(doc)
@@ -252,7 +251,6 @@ if choice == '📝 Summarize':
                      word_freq[word.text]+=1
          st.write(word_freq)
      
-      
    uploaded_txt = st.file_uploader("Choose a file",type=["txt"])
    if uploaded_txt is not None:
       st.write(type(uploaded_txt))
