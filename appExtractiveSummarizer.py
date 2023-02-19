@@ -330,7 +330,7 @@ if choice == '📝 Summarize':
          stopwords = nltk.corpus.stopwords.words('english')
          st.write(stopwords[:10])
          st.success('Summary')
-         str00 = textwrap.shorten(text, width=1500, placeholder='.')
+         str00 = textwrap.shorten(text, width=1300, placeholder='.')
          st.write(str00)
          countOfWordsForSummary = len(str00.split())
          st.write("Count of Words For Summary: ", countOfWordsForSummary)
