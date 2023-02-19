@@ -295,7 +295,7 @@ if choice == '📝 Summarize':
          
          rm_stopwords_from_text(text)
          st.success('Cleaned Text')
-         st.text(text)
+         st.write(text)
          countOfWordsForCleaned = len(text.split())
          st.write("Count of Words For Cleaned: ", countOfWordsForCleaned)
          
@@ -322,6 +322,18 @@ if choice == '📝 Summarize':
          st.success('Sentence Score')
          sentence_scores
          
+         st.success('Word Tokenize')
+         sToken = nltk.word_tokenize(text)
+         st.write(sToken)
+         st.success('Stopwords')
+         st.write("List of stopwords:")
+         stopwords = nltk.corpus.stopwords.words('english')
+         st.write(stopwords[:10])
+         st.success('Summary')
+         str00 = textwrap.shorten(text, width=1500, placeholder='.')
+         st.write(str00)
+         countOfWordsForSummary = len(str00.split())
+         st.write("Count of Words For Summary: ", countOfWordsForSummary)
      
    uploaded_txt = st.file_uploader("Choose a file",type=["txt"])
    if uploaded_txt is not None:
@@ -398,7 +410,7 @@ if choice == '📝 Summarize':
          
          rm_stopwords_from_text(raw_text)
          st.success('Cleaned Text')
-         st.text(raw_text)
+         st.write(raw_text)
          countOfWordsForCleaned = len(raw_text.split())
          st.write("Count of Words For Cleaned: ", countOfWordsForCleaned)
          
