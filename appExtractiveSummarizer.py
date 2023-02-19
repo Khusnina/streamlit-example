@@ -120,9 +120,9 @@ if choice == '📚 Fiction Books':
          return text
          
       st.success('Cleaned Description')
-      Df['Description']=Df['Description'].apply(clean_text)
-      Df['Description'] = Df['Description'].apply(preprocess)
-      st.dataframe(Df)
+      df['Description'] = df['Description'].apply(clean_text)
+      df['Description'] = df['Description'].apply(preprocess)
+      st.dataframe(df)
       
       st.write("List of Fiction Book after processing")
       st.write(df.head(20))
