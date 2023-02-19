@@ -81,19 +81,20 @@ if choice == '📚 Fiction Books':
       st.info('Select one either to process or not.', icon="ℹ️")
    if clean == 'Process':
       st.info('You want to process the list.', icon="ℹ️")
-      # Replacing all the occurrences of \n,\\n,\t,\\ with a space.
-      df['Description'] = df['Description'].str.replace('\n\n\n\n', ' ')
-      df['Description'] = df['Description'].str.replace('\n\n', ' ')
-      df['Description'] = df['Description'].str.replace('\n', ' ')
-      df['Description'] = df['Description'].str.replace('\r', '')
-      df['Description'] = df['Description'].str.replace('/', ' ')
-      df['Description'] = df['Description'].str.replace('    ', ' ')
-      df['Description'] = df['Description'].str.replace('   ', ' ')
-      df['Description'] = df['Description'].replace('? ', '. ')
-      df['Description'] = df['Description'].replace('*', '')
-      df['Description'] = df['Description'].replace('; ', '')
-      df['Description'] = df['Description'].replace(', ', '')
-      def preprocess(text):
+      
+      def clean_text(text):
+            text = text.lower()
+            text = ' '.join([contraction_mapping[i] if i in contraction_mapping.keys() else i for i in text.split()])
+            text=re.sub(r'\(.*\)',"",text)
+            text=re.sub("'s","",text)
+            text=re.sub('"','',text)
+            text=' '.join([i for i in text.split() if i.isalpha()])
+            text=re.sub('[^a-zA-Z]'," ",text)
+            return text
+         
+         stop_words = stopwords.words('english')
+
+         def preprocess(text):
             text = text.lower() # lowercase
             text = text.split() # convert have'nt -> have not
             for i in range(len(text)):
@@ -109,11 +110,20 @@ if choice == '📚 Fiction Books':
             text = " ".join(newtext)
             text = text.replace("'s",'') # convert your's -> your
             text = re.sub(r'\(.*\)','',text) # remove (words)
-            text = re.sub(r'[^a-zA-Z0-9. ]','',text) # remove punctuations
+            text = re.sub(r'[^a-zA-Z ]','',text) # remove punctuations
+            punctuation = '''!()-[]{};:'"\,<>/?@#$%^&*_~'''
+            final_string = ''
+            for ch in text:
+               if ch not in punctuation:
+                  final_string = final_string + ch
             text = re.sub(r'\.',' . ',text)
             return text
          
-      Df['Description']=Df['Description'].apply(preprocess)
+         st.success('Cleaned Description')
+         #Df['Description']=Df['Description'].apply(clean_text)
+         Df['Description'] = Df['Description'].apply(preprocess)
+         st.dataframe(Df)
+      
       st.write("List of Fiction Book after processing")
       st.write(df.head(20))
       st.download_button("Download CSV",
