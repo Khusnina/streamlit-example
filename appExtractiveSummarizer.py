@@ -44,7 +44,7 @@ activities = ["💡 Introduction","📚 Fiction Books","📝 Summarize"]
 choice = st.sidebar.selectbox("💻 Select Activity", activities)
 
 if choice == '💡 Introduction':
-   st.markdown("<h2 style='text-align: center; color: white;'>💡 INTRODUCTION 💡</h2>", unsafe_allow_html=True)
+   st.markdown("<h2 style='text-align: center; color: #8AF1DD;'>💡 INTRODUCTION 💡</h2>", unsafe_allow_html=True)
    st.markdown("<p style='text-align: center; color: white;'>Books are becoming increasingly popular among readers who love to read books especially English books. The passage of time has changed the source of books that can be read online in the form of electronic format where users only need to use a mobile device via the Internet. Books consist of various types of genres that are categorized into two namely fiction and non-fiction. Fiction books refer to literary plots, background, and characters designed and created from the writer’s imagination. Based on term of book sales in Malaysia, fiction books are more popular among readers than non-fiction book. Readers usually make an online book review after reading a whole book that contains a long story divided into several chapters that give structure and readability to the book by summarizing it manually to describe the contents.</p>", unsafe_allow_html=True)
    image = Image.open('summarization.png')
    col1, col2, col3 = st.columns([12,20,10])
@@ -58,7 +58,7 @@ if choice == '💡 Introduction':
    st.markdown("<p style='text-align: center; color: white;'>\nFor extractive text summarization, the main sentence and the object are extracted without modifying the object itself, the strategy of concatenating on extracting summary from a given corpus. The system will select the most important sentences in the online book then combine them to form a summary extractively through machine learning with Natural Language Processing (NLP). The Repetitive Neural Network (RNN) is the model that will be used to generate the summary. Recurrent Neural Network (RNN) is the most common architectures for Neural Text Summarization. The approach is based on the idea of identifying a set of sentences which collectively give the highest ROUGE with respect to the gold summary.</p>", unsafe_allow_html=True)
     
 if choice == '📚 Fiction Books':
-   st.markdown("<h2 style='text-align: center; color: white;'>📚 FICTIONS BOOKS 📚</h2>", unsafe_allow_html=True)
+   st.markdown("<h2 style='text-align: center; color: #8AF1DD;'>📚 FICTIONS BOOKS 📚</h2>", unsafe_allow_html=True)
    category = ["Story","Harry Potter"]
    url = 'https://raw.githubusercontent.com/Khusnina/streamlit-example/master/listBook.csv'
    df = pd.read_csv(url,encoding="latin-1")
@@ -329,7 +329,7 @@ if choice == '📚 Fiction Books':
          st.download_button('Download', content15)
 
 if choice == '📝 Summarize':
-   st.markdown("<h2 style='text-align: center; color: white;'>📝 EXTRACTIVE TEXT SUMMARIZER 📝</h2>", unsafe_allow_html=True)
+   st.markdown("<h2 style='text-align: center; color: #8AF1DD;'>📝 EXTRACTIVE TEXT SUMMARIZER 📝</h2>", unsafe_allow_html=True)
    with st.form(key = 'nlpForm'):
       text = st.text_area("Original Content","Enter text here")
       submitted = st.form_submit_button("Summarize")
